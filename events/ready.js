@@ -10,6 +10,21 @@ class ReadyEvent extends Event {
 
     async run(client) {
         console.log(`${client.user.username} is online!`)
+
+        this.presence(client)
+        setInterval(() => {
+            this.presence(client)
+        }, 60000)
+    }
+
+    presence(client) {
+        let array = ["Dummi", "Tyman", "Clari"]
+
+        client.user.setActivity({
+            name: `${array[Math.floor(Math.random() * array.length)]} develop me.`,
+            type: "STREAMING",
+            url: "https://www.youtube.com/watch?v=j-a8An12QDs"
+        })
     }
 }
 

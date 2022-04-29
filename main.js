@@ -8,7 +8,20 @@ const client = new Client({
     prefix: prefix,
     ownerId: ownerId,
     guildId: guildId,
-    global: false
+    global: false,
+    color: {
+        embed: "#FF00FF",
+        true: "#00FF00",
+        false: "#FF0000"
+    },
+    config: {
+        example: 'Here you can store any data you want that doesn\'t get included with the bot.',
+        notes: {
+            note1: "Don't store info like bot tokens or api tokens here",
+            note2: "you can store any kind of data here, with as many objects as you want."
+        },
+        array: ["or", "even", "an", "array", ":)"]
+    }
 })
 
 const commands = new CommandHandler({ client: client });
