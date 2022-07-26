@@ -1,32 +1,43 @@
-const { MessageCommand } = require('xernerx');
+const { MessageCommand, Discord } = require('xernerx');
+const { inspect } = require("util");
 
 class PingCommand extends MessageCommand {
     constructor() {
         super('ping', {
             name: 'ping',
             description: 'Pong!',
-            seperator: ' ',
+            separator: ' ',
             args: [{
-                type: "string",
-                name: "greeting",
-                content: ["hello", "goodbye"]
+                type: "option",
+                name: "option",
+                content: ["hello", "goodbye"],
             }, {
-                type: "string",
+                type: 'number',
+                name: 'number',
+            }, {
+                type: 'boolean',
+                name: 'boolean'
+            }, {
+                type: 'user',
+                name: 'user'
+            }, {
+                type: 'member',
+                name: 'member'
+            }, {
+                type: 'channel',
+                name: 'channel'
+            }, {
+                type: "rest",
                 name: "rest",
-                content: 'rest'
             }]
         })
     }
 
     async exec(message, args) {
-        console.log(args)
-        let text = 'PONG!';
-        if (args.greeting == 'goodbye') text = `Goodbye ${message.author}!`;
-        if (args.greeting == 'hello') text = `Hello ${message.author}!`;
-        if (args.rest) text += `This was your remaining arguments in your message \`${args.rest}\`.`;
+        let text = { option: args?.option, number: args?.number, boolean: args?.boolean, user: args?.user, memberRoles: args?.member?._roles, channel: args?.channel?.name, rest: args?.rest }
+        // message.reply({ content: "```js\n" + inspect(text).toString() + "```" })
 
-
-        message.reply({ content: text })
+        message.util.send('hi')
     }
 }
 

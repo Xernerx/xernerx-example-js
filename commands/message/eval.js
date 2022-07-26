@@ -16,7 +16,7 @@ class EvalCommand extends MessageCommand {
             aliases: ['ev'],
             args: [{
                 name: 'code',
-                type: "string",
+                type: "rest",
                 content: 'rest'
             }]
         })
@@ -25,21 +25,22 @@ class EvalCommand extends MessageCommand {
     async exec(message, args) {
         let code = args.code?.replace(/```js\n|```/g, "");
 
-        let output;
-
-        if (!code) output = "```js\nNo code to be evaluated.```";
-
-        output = await eval(code);
-
-        if (typeof output !== 'string') output = inspect(output);
-
-        output = await output.replaceAll(this.client.token, "Insert very secure and private token here :)");
-        output = await clean(output);
         try {
-            output.length < 2000 ? message.reply("```js\n" + output + "```" || 'error') : message.reply('Code is too long');
+            let output;
+
+            if (!code) output = "```js\nNo code to be evaluated.```";
+
+            output = await eval(code);
+
+            if (typeof output !== 'string') output = inspect(output);
+
+            output = await output.replaceAll(this.client.token, "Insert very secure and private token here :)");
+            output = await clean(output);
+
+            output.length < 2000 ? message.reply("```js\n" + output + "```" || 'error') : message.reply('Code is too long'), console.log(output);
         }
         catch (error) {
-            error.length < 2000 ? message.reply("```js\n" + error + "```" || 'error') : message.reply('Error is too long');
+            inspect(error).length < 2000 ? message.reply("```js\n" + error + "```" || 'error') : message.reply('Error is too long');
         }
     }
 }

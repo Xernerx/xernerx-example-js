@@ -1,4 +1,4 @@
-const { InteractionCommand } = require('xernerx');
+const { InteractionCommand, Discord: { MessageEmbed } } = require('xernerx');
 
 class CommandCommand extends InteractionCommand {
     constructor() {
@@ -8,8 +8,16 @@ class CommandCommand extends InteractionCommand {
         })
     }
 
-    async exec(interaction) {
-        interaction.reply('This is a command without any args, subs or groups.');
+    exec(interaction) {
+        let embed = new MessageEmbed()
+            .setTitle(this.data.name)
+            .setDescription(this.data.description)
+            .setURL(`${this.client.config.links.github}/blob/main/commands/interaction/${this.data.name}.js`)
+            .setColor(this.client.color.embed)
+            .setTimestamp()
+            .setFooter({ text: interaction.user.username, iconURL: interaction.user.avatarURL({ dynamic: true }) });
+
+        interaction.reply({ embeds: [embed] })
     }
 }
 

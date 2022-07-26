@@ -1,18 +1,17 @@
-const { Client, EventHandler } = require('xernerx');
-const { CommandHandler } = require('../xernerx/main');
-// const { Intents } = require('discord.js');
+const { Client, EventHandler, CommandHandler, LanguageHandler, Discord } = require('xernerx');
 const { prefix, guildId, ownerId, token } = require('./data/config/config.json');
 
 const client = new Client({
-    intents: [513],
+    intents: [Discord.Intents.FLAGS.GUILDS, Discord.Intents.FLAGS.GUILD_MESSAGES, Discord.Intents.FLAGS.GUILD_VOICE_STATES],
     prefix: prefix,
     ownerId: ownerId,
     guildId: guildId,
     global: false,
+    ignoreOwner: false,
+    defaultCooldown: 2000,
+    logging: true,
     color: {
-        embed: "#FF00FF",
-        true: "#00FF00",
-        false: "#FF0000"
+        embed: "#FF0000",
     },
     config: {
         example: 'Here you can store any data you want that doesn\'t get included with the bot.',
@@ -20,17 +19,26 @@ const client = new Client({
             note1: "Don't store info like bot tokens or api tokens here",
             note2: "you can store any kind of data here, with as many objects as you want."
         },
-        array: ["or", "even", "an", "array", ":)"]
+        array: ["or", "even", "an", "array", ":)"],
+        links: {
+            github: "https://github.com/TheDummi/example-xernerx-bot"
+        }
     }
 })
 
-const commands = new CommandHandler({ client: client });
+const commandHandler = new CommandHandler({ client: client });
 
-const events = new EventHandler({ client: client });
+const eventHandler = new EventHandler({ client: client });
 
-commands.loadInteractionCommands('./src/commands/interaction');
-commands.loadMessageCommands('./src/commands/message');
+const languageHandler = new LanguageHandler({ client: client, lang: 'en', fallbackLang: 'en', ns: 'Xernerx Framework' })
 
-events.loadEvents('./src/events')
+commandHandler.loadInteractionCommands('commands/interaction', true);
+commandHandler.loadContextMenuCommands('commands/contextMenu', true);
+commandHandler.loadMessageCommands('commands/message', true);
+
+
+eventHandler.loadEvents('events', true);
+
+languageHandler.loadLanguages({ path: 'data/languages', logging: true });
 
 client.login(token)

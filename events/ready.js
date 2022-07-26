@@ -9,7 +9,6 @@ class ReadyEvent extends Event {
     }
 
     async run(client) {
-        console.log(`${client.user.username} is online!`)
 
         this.presence(client)
         setInterval(() => {
