@@ -1,23 +1,22 @@
 const { InteractionCommand, Discord: { EmbedBuilder } } = require('xernerx');
 
-class SubcommandCommand extends InteractionCommand {
+class GroupsCommand extends InteractionCommand {
     constructor() {
-        super('subcommands', {
-            name: 'subcommands',
+        super('groups', {
+            name: 'groups',
             description: 'A command with subcommands.',
-            subs: [{
-                name: 'name',
-                description: 'Get the command\'s name.'
-            }, {
-                name: 'description',
-                description: 'Get the command\'s description.'
-            }, {
-                name: 'subs',
-                description: 'Get the command\'s subcommands.',
-                args: [{
-                    type: "string",
-                    name: "string",
-                    description: "hi"
+            groups: [{
+                name: 'group',
+                description: 'group',
+                subs: [{
+                    name: 'name',
+                    description: 'Get the command\'s name.'
+                }, {
+                    name: 'description',
+                    description: 'Get the command\'s description.'
+                }, {
+                    name: 'subs',
+                    description: 'Get the command\'s subcommands.'
                 }]
             }]
         })
@@ -36,4 +35,4 @@ class SubcommandCommand extends InteractionCommand {
     }
 }
 
-module.exports = SubcommandCommand;
+module.exports = GroupsCommand;

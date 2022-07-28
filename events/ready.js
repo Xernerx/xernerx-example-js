@@ -1,4 +1,4 @@
-const { Event } = require('xernerx');
+const { Event, Discord: { ActivityType } } = require('xernerx');
 
 class ReadyEvent extends Event {
     constructor() {
@@ -19,10 +19,12 @@ class ReadyEvent extends Event {
     presence(client) {
         let array = ["Dummi", "Tyman", "Clari"]
 
-        client.user.setActivity({
-            name: `${array[Math.floor(Math.random() * array.length)]} develop me.`,
-            type: "STREAMING",
-            url: "https://www.youtube.com/watch?v=j-a8An12QDs"
+        client.user.setPresence({
+            activities: [{
+                name: `${array[Math.floor(Math.random() * array.length)]} develop me.`,
+                type: ActivityType.Streaming,
+                url: "https://www.youtube.com/watch?v=j-a8An12QDs"
+            }]
         })
     }
 }

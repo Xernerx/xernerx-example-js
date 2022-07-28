@@ -1,4 +1,4 @@
-const { InteractionCommand, Discord: { MessageEmbed } } = require('xernerx');
+const { InteractionCommand, Discord: { EmbedBuilder } } = require('xernerx');
 
 class CommandCommand extends InteractionCommand {
     constructor() {
@@ -9,7 +9,7 @@ class CommandCommand extends InteractionCommand {
     }
 
     exec(interaction) {
-        let embed = new MessageEmbed()
+        let embed = new EmbedBuilder()
             .setTitle(this.data.name)
             .setDescription(this.data.description)
             .setURL(`${this.client.config.links.github}/blob/main/commands/interaction/${this.data.name}.js`)

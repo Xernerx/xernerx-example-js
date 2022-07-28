@@ -1,4 +1,4 @@
-const { InteractionCommand, Discord: { MessageEmbed }, version, Discord } = require('xernerx');
+const { InteractionCommand, Discord: { EmbedBuilder }, version, Discord } = require('xernerx');
 
 class InfoCommand extends InteractionCommand {
     constructor() {
@@ -10,16 +10,16 @@ class InfoCommand extends InteractionCommand {
     }
 
     async exec(interaction) {
-        let embed = new MessageEmbed()
+        let embed = new EmbedBuilder()
             .setTitle(this.data.name)
             .setDescription(this.info)
             .setURL(`${this.client.config.links.github}/blob/main/commands/interaction/${this.data.name}.js`)
             .setColor(this.client.color.embed)
             .setTimestamp()
             .setFooter({ text: interaction.user.username, iconURL: interaction.user.avatarURL({ dynamic: true }) })
-            .addField(this.data.name, `Latest version: ${version}\nDiscord.js version: ${Discord.version}`)
+            .addFields({ name: this.data.name, value: `Latest version: ${version}\nDiscord.js version: ${Discord.version}` })
 
-        interaction.reply({ embeds: [embed] })
+        interaction.reply({ embeds: [embed] });
     }
 }
 

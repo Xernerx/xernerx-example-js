@@ -1,8 +1,8 @@
-const { Client, EventHandler, CommandHandler, LanguageHandler, Discord } = require('xernerx');
+const { Client, EventHandler, CommandHandler, LanguageHandler, Discord: { GatewayIntentBits: Intents } } = require('xernerx');
 const { prefix, guildId, ownerId, token } = require('./data/config/config.json');
 
 const client = new Client({
-    intents: [Discord.Intents.FLAGS.GUILDS, Discord.Intents.FLAGS.GUILD_MESSAGES, Discord.Intents.FLAGS.GUILD_VOICE_STATES],
+    intents: [Intents.Guilds, Intents.GuildMessages, Intents.GuildVoiceStates, Intents.MessageContent, Intents.DirectMessages],
     prefix: prefix,
     ownerId: ownerId,
     guildId: guildId,
@@ -35,7 +35,6 @@ const languageHandler = new LanguageHandler({ client: client, lang: 'en', fallba
 commandHandler.loadInteractionCommands('commands/interaction', true);
 commandHandler.loadContextMenuCommands('commands/contextMenu', true);
 commandHandler.loadMessageCommands('commands/message', true);
-
 
 eventHandler.loadEvents('events', true);
 
