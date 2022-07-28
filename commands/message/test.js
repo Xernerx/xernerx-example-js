@@ -8,7 +8,7 @@ class TestCommand extends MessageCommand {
             description: 'Pong!',
             args: [{
                 name: 'test',
-                type: 'role'
+                type: 'user'
             }]
         })
     }
