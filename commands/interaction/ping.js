@@ -18,7 +18,7 @@ class PingCommand extends InteractionCommand {
             .setFooter({ text: interaction.user.username, iconURL: interaction.user.avatarURL({ dynamic: true }) })
             .addFields({ name: this.data.name, value: `${this.client.ws.ping}ms.` })
 
-        interaction.reply({ embeds: [embed] })
+        interaction.util.reply({ embeds: [embed] })
     }
 }
 

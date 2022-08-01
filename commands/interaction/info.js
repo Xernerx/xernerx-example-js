@@ -19,7 +19,7 @@ class InfoCommand extends InteractionCommand {
             .setFooter({ text: interaction.user.username, iconURL: interaction.user.avatarURL({ dynamic: true }) })
             .addFields({ name: this.data.name, value: `Latest version: ${version}\nDiscord.js version: ${Discord.version}` })
 
-        interaction.reply({ embeds: [embed] });
+        interaction.util.reply({ embeds: [embed] });
     }
 }
 

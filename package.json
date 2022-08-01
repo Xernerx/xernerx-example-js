@@ -1,6 +1,6 @@
 {
-  "name": "bot",
-  "version": "1.0.0",
+  "name": "xernerx-example-bot",
+  "version": "1.0.1",
   "description": "",
   "main": "main.js",
   "scripts": {

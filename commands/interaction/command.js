@@ -9,15 +9,17 @@ class CommandCommand extends InteractionCommand {
     }
 
     exec(interaction) {
-        let embed = new EmbedBuilder()
-            .setTitle(this.data.name)
-            .setDescription(this.data.description)
-            .setURL(`${this.client.config.links.github}/blob/main/commands/interaction/${this.data.name}.js`)
-            .setColor(this.client.color.embed)
-            .setTimestamp()
-            .setFooter({ text: interaction.user.username, iconURL: interaction.user.avatarURL({ dynamic: true }) });
+        interaction.deferReply().then(() => {
+            let embed = new EmbedBuilder()
+                .setTitle(this.data.name)
+                .setDescription(this.data.description)
+                .setURL(`${this.client.config.links.github}/blob/main/commands/interaction/${this.data.name}.js`)
+                .setColor(this.client.color.embed)
+                .setTimestamp()
+                .setFooter({ text: interaction.user.username, iconURL: interaction.user.avatarURL({ dynamic: true }) });
 
-        interaction.reply({ embeds: [embed] })
+            interaction.util.reply({ embeds: [embed] });
+        })
     }
 }
 

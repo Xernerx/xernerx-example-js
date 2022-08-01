@@ -32,7 +32,7 @@ class SubcommandCommand extends InteractionCommand {
             .setTimestamp()
             .setFooter({ text: interaction.user.username, iconURL: interaction.user.avatarURL({ dynamic: true }) });
 
-        interaction.reply({ embeds: [embed] })
+        interaction.util.reply({ embeds: [embed] });
     }
 }
 

@@ -8,8 +8,9 @@ class CommandBlockedEvent extends Event {
         })
     }
 
-    async run(action, reason) {
-        return action.reply(`Command Block Occurred, reason ${reason}`);
+    async run(action, reason, missing) {
+        if (!isNaN(missing)) missing = [`${missing}ms`]
+        return action.reply(`Command Block Occurred, reason ${reason}. If applied, you're missing the following: ${missing?.join(', ')}`);
     }
 }
 

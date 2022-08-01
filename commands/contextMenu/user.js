@@ -1,4 +1,4 @@
-const { ContextMenuCommand, Discord: { EmbedBuilder }, reply, functions: { toTitleCase } } = require("xernerx");
+const { ContextMenuCommand, Discord: { EmbedBuilder }, reply } = require("xernerx");
 
 class UserCommand extends ContextMenuCommand {
     constructor() {

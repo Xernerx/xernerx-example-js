@@ -14,7 +14,6 @@ class TestCommand extends MessageCommand {
     }
 
     async exec(message, args) {
-        console.log(args.test)
         let m = await message.util.send('this is the text command')
     }
 }

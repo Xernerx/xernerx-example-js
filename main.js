@@ -1,42 +1,30 @@
-const { Client, EventHandler, CommandHandler, LanguageHandler, Discord: { GatewayIntentBits: Intents } } = require('xernerx');
+const { Client, LanguageHandler, Discord: { GatewayIntentBits } } = require('xernerx');
 const { prefix, guildId, ownerId, token } = require('./data/config/config.json');
 
 const client = new Client({
-    intents: [Intents.Guilds, Intents.GuildMessages, Intents.GuildVoiceStates, Intents.MessageContent, Intents.DirectMessages],
+    intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildVoiceStates, GatewayIntentBits.MessageContent, GatewayIntentBits.DirectMessages],
     prefix: prefix,
     ownerId: ownerId,
     guildId: guildId,
     global: false,
     ignoreOwner: false,
-    defaultCooldown: 2000,
+    defaultCooldown: 5000,
     logging: true,
     color: {
         embed: "#FF0000",
     },
     config: {
-        example: 'Here you can store any data you want that doesn\'t get included with the bot.',
-        notes: {
-            note1: "Don't store info like bot tokens or api tokens here",
-            note2: "you can store any kind of data here, with as many objects as you want."
-        },
-        array: ["or", "even", "an", "array", ":)"],
-        links: {
-            github: "https://github.com/TheDummi/example-xernerx-bot"
-        }
+        links: { github: "https://github.com/TheDummi/example-xernerx-bot/" }
     }
 })
 
-const commandHandler = new CommandHandler({ client: client });
-
-const eventHandler = new EventHandler({ client: client });
-
 const languageHandler = new LanguageHandler({ client: client, lang: 'en', fallbackLang: 'en', ns: 'Xernerx Framework' })
 
-commandHandler.loadInteractionCommands('commands/interaction', true);
-commandHandler.loadContextMenuCommands('commands/contextMenu', true);
-commandHandler.loadMessageCommands('commands/message', true);
+client.modules.commandHandler.loadAllInteractionCommands('commands/interaction', true)
+client.modules.commandHandler.loadAllContextMenuCommands('commands/contextMenu', true)
+client.modules.commandHandler.loadAllMessageCommands('commands/message', true);
 
-eventHandler.loadEvents('events', true);
+client.modules.eventHandler.loadEvents('events', true);
 
 languageHandler.loadLanguages({ path: 'data/languages', logging: true });
 

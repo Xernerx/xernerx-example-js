@@ -70,7 +70,7 @@ class argumentsCommand extends InteractionCommand {
             .setFooter({ text: interaction.user.username, iconURL: interaction.user.avatarURL({ dynamic: true }) })
             .addFields(options.fields)
 
-        interaction.reply({ embeds: [embed] })
+        interaction.util.reply({ embeds: [embed] });
     }
 }
 
