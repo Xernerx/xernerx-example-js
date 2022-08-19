@@ -4,6 +4,7 @@ class CommandRunEvent extends Event {
     constructor() {
         super('commandRun', {
             name: 'commandRun',
+            type: "client",
             once: false
         })
     }

@@ -4,12 +4,13 @@ class ErrorEvent extends Event {
     constructor() {
         super('error', {
             name: 'error',
+            type: "client",
             once: false
         })
     }
 
     async run(action, error) {
-        return action.reply(`An Error Occurred\nError:\`\`\`js\n${error.stack}\`\`\``)
+        return action.util.reply(`An Error Occurred\nError:\`\`\`js\n${error.stack}\`\`\``)
     }
 }
 

@@ -4,6 +4,7 @@ class ReadyEvent extends Event {
     constructor() {
         super('ready', {
             name: 'ready',
+            type: 'client',
             once: false
         })
     }
@@ -16,12 +17,15 @@ class ReadyEvent extends Event {
         }, 60000)
     }
 
-    presence(client) {
-        let array = ["Dummi", "Tyman", "Clari"]
+    async presence(client) {
+        let owners = [];
+        for (const owner of this.client.settings.ownerId) {
+            owners.push((await this.client.users.fetch(owner)).tag)
+        }
 
         client.user.setPresence({
             activities: [{
-                name: `${array[Math.floor(Math.random() * array.length)]} develop me.`,
+                name: `${owners[Math.floor(Math.random() * owners.length)]} develop me.`,
                 type: ActivityType.Streaming,
                 url: "https://www.youtube.com/watch?v=j-a8An12QDs"
             }]

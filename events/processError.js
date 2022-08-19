@@ -4,7 +4,8 @@ class ProcessErrorEvent extends Event {
     constructor() {
         super('unhandledRejection', {
             name: 'unhandledRejection',
-            process: true
+            type: "process",
+            once: false
         })
     }
 

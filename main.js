@@ -7,25 +7,31 @@ const client = new Client({
     ownerId: ownerId,
     guildId: guildId,
     global: false,
-    ignoreOwner: false,
+    ignoreOwner: true,
     defaultCooldown: 5000,
-    logging: true,
+    logging: ["runType", "name", "aliases"],
+    defer: {
+        reply: true,
+    },
     color: {
         embed: "#FF0000",
     },
     config: {
         links: { github: "https://github.com/TheDummi/example-xernerx-bot/" }
+    },
+    language: {
+        lang: "en",
+        fallbackLng: "en",
+        ns: "Xernerx"
     }
 })
 
-const languageHandler = new LanguageHandler({ client: client, lang: 'en', fallbackLang: 'en', ns: 'Xernerx Framework' })
+client.modules.commandHandler.loadAllInteractionCommands('commands/interaction', true);
+client.modules.commandHandler.loadAllContextMenuCommands('commands/contextMenu', true);
+client.modules.commandHandler.loadAllMessageCommands('commands/message');
 
-client.modules.commandHandler.loadAllInteractionCommands('commands/interaction', true)
-client.modules.commandHandler.loadAllContextMenuCommands('commands/contextMenu', true)
-client.modules.commandHandler.loadAllMessageCommands('commands/message', true);
+client.modules.eventHandler.loadAllEvents('events');
 
-client.modules.eventHandler.loadEvents('events', true);
-
-languageHandler.loadLanguages({ path: 'data/languages', logging: true });
+client.modules.languageHandler.loadAllLanguages('data/languages');
 
 client.login(token)

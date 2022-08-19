@@ -1,4 +1,4 @@
-const { InteractionCommand, Discord: { EmbedBuilder }, selectMenuPaginator } = require('xernerx');
+const { InteractionCommand, Discord: { EmbedBuilder } } = require('xernerx');
 
 class MenuCommand extends InteractionCommand {
     constructor() {
@@ -12,7 +12,7 @@ class MenuCommand extends InteractionCommand {
     async exec(interaction) {
         let embeds = [];
 
-        for (const channel of (await interaction.guild.channels.fetch())) {
+        for (const channel of (await interaction.guild.channels.fetch()).values()) {
             let embed = new EmbedBuilder()
                 .setTitle(channel.name || "None")
                 .setDescription(channel.topic || "None")
@@ -20,7 +20,7 @@ class MenuCommand extends InteractionCommand {
             embeds.push(embed);
         }
 
-        selectMenuPaginator(interaction, embeds);
+        interaction.util.selectMenuPaginator(embeds.slice(0, 25));
     }
 }
 

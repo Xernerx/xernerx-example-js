@@ -24,7 +24,7 @@ class UserCommand extends ContextMenuCommand {
                 { name: 'Joined', value: `<t:${Math.round(member.joinedTimestamp / 1000)}:R>` },
             ])
 
-        reply(interaction, { embeds: [embed] })
+        interaction.util.reply({ embeds: [embed] })
     }
 }
 

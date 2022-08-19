@@ -14,7 +14,13 @@ class TestCommand extends MessageCommand {
     }
 
     async exec(message, args) {
-        let m = await message.util.send('this is the text command')
+        let embeds = [];
+
+        for (let i = 0; i < 15; i++) {
+            embeds.push(new Discord.EmbedBuilder().setTitle(String(i)))
+        }
+
+        message.util.buttonPaginator(embeds);
     }
 }
 

@@ -4,14 +4,35 @@ class LoadCommand extends MessageCommand {
     constructor() {
         super('load', {
             name: 'load',
-            description: 'Pong!'
+            description: 'Pong!',
+            aliases: ["reload"],
+            args: [{
+                type: "option",
+                name: "option",
+                content: ["all", "interaction", "context", "message"]
+            }]
         })
     }
 
     async exec(message, args) {
-        let commands = this.client.modules.commandHandler.reloadAllInteractionCommands()
+        let commands;
 
-        // message.reply(`Reloaded ${commands.join(', ')}.`)
+        switch (args.option) {
+            case 'interaction': {
+                commands = this.client.modules.loader.reloadAllInteractionCommands()
+                break;
+            }
+            case 'context': {
+                commands = this.client.modules.loader.reloadAllContextMenuCommands()
+                break;
+            }
+            case 'message': {
+                commands = this.client.modules.loader.reloadAllMessageCommands()
+                break;
+            }
+        }
+
+        message.util.reply(`Reloaded ${commands.map(command => command.name).join(', ')}`)
     }
 }
 

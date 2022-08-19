@@ -28,8 +28,6 @@ class ServerCommand extends ContextMenuCommand {
             else humans.push(m);
         })
 
-        console.log(guild)
-
         let embed = new EmbedBuilder()
             .setThumbnail(guild.iconURL({ dynamic: true }))
             .setTitle(guild.name)
@@ -72,7 +70,7 @@ class ServerCommand extends ContextMenuCommand {
                 }
             ])
 
-        reply(interaction, { embeds: [embed] })
+        interaction.util.reply({ embeds: [embed] })
     }
 }
 
