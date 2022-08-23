@@ -37,7 +37,7 @@ class PingCommand extends MessageCommand {
         let text = { option: args?.option, number: args?.number, boolean: args?.boolean, user: args?.user, memberRoles: args?.member?._roles, channel: args?.channel?.name, rest: args?.rest }
         // message.reply({ content: "```js\n" + inspect(text).toString() + "```" })
 
-        message.util.send('hi')
+        message.util.send(`My uptime : ${message.util.uptime()}`);
     }
 }
 

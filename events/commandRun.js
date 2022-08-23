@@ -10,7 +10,7 @@ class CommandRunEvent extends Event {
     }
 
     async run(action, type, command) {
-        console.log(command?.data?.name || command.id)
+        console.log(action.util.commandName())
     }
 }
 
