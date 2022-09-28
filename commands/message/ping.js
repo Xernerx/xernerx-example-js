@@ -11,33 +11,50 @@ class PingCommand extends MessageCommand {
                 type: "option",
                 name: "option",
                 content: ["hello", "goodbye"],
+                default: "hello"
             }, {
                 type: 'number',
                 name: 'number',
+                default: 4
             }, {
                 type: 'boolean',
-                name: 'boolean'
+                name: 'boolean',
+                default: true
             }, {
                 type: 'user',
-                name: 'user'
+                name: 'user',
+                default: message => message.author
             }, {
                 type: 'member',
-                name: 'member'
+                name: 'member',
+                default: message => message.member
             }, {
                 type: 'channel',
-                name: 'channel'
+                name: 'channel',
+                default: message => message.channel
             }, {
                 type: "rest",
                 name: "rest",
+                default: "No rest."
+            }, {
+                type: "flag",
+                name: "flag",
+                content: "--flag"
+            }, {
+                type: "flag",
+                name: "ping",
+                content: "--ping"
             }]
         })
     }
 
-    async exec(message, args) {
-        let text = { option: args?.option, number: args?.number, boolean: args?.boolean, user: args?.user, memberRoles: args?.member?._roles, channel: args?.channel?.name, rest: args?.rest }
-        // message.reply({ content: "```js\n" + inspect(text).toString() + "```" })
+    async conditions(message, args) {
+        if (message.author != this.client.settings.ownerId[0]) return message.util.reply(`You're not ${(await this.client.users.fetch(this.client.settings.ownerId[0]))}`);
+    }
 
-        message.util.send(`My uptime : ${message.util.uptime()}`);
+    async exec(message, args) {
+        message.util.reply({ content: "```js\n" + Object.entries(args) + "```" })
+        console.log(args)
     }
 }
 

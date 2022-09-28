@@ -1,4 +1,4 @@
-const { InteractionCommand, Discord: { EmbedBuilder } } = require('xernerx');
+const { InteractionCommand, Discord: { EmbedBuilder }, i18next } = require('xernerx');
 
 class PingCommand extends InteractionCommand {
     constructor() {
@@ -6,6 +6,10 @@ class PingCommand extends InteractionCommand {
             name: 'ping',
             description: 'Pong!',
         })
+    }
+
+    async conditions(interaction, args) {
+        console.log('hi')
     }
 
     async exec(interaction) {

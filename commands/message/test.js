@@ -1,5 +1,4 @@
 const { MessageCommand, Discord } = require('xernerx');
-const { inspect } = require("util");
 
 class TestCommand extends MessageCommand {
     constructor() {

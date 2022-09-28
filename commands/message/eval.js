@@ -31,6 +31,18 @@ class EvalCommand extends MessageCommand {
             }, {
                 name: 'code',
                 type: "rest",
+            }, {
+                name: "nomsg",
+                type: "flag",
+                content: "--nm"
+            }, {
+                name: "dm",
+                type: "flag",
+                content: "--dm"
+            }, {
+                name: "nosrc",
+                type: "flag",
+                content: "--ns"
             }]
         })
     }
@@ -111,7 +123,11 @@ class EvalCommand extends MessageCommand {
             .setFooter({ text: message.author.username, iconURL: message.author.avatarURL({ dynamic: true }) })
             .setTimestamp()
 
-        message.util.reply({ content: null, embeds: [embed] });
+        if (!args.flags.nomsg) await message.util.reply({ content: null, embeds: [embed] });
+
+        if (args.flags.dm) await message.author.send({ content: null, embeds: [embed] });
+
+        if (args.flags.nosrc) await message.delete();
     }
 
     clean(text) {
@@ -136,7 +152,7 @@ class EvalCommand extends MessageCommand {
         code = code?.replace(/```js\n|```/g, "");
 
         try {
-            output = await eval(`(async () => { return await ${code} })();`);
+            output = await eval(`(async () => { ${code} })();`);
 
             state = true;
         }

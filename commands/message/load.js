@@ -15,24 +15,24 @@ class LoadCommand extends MessageCommand {
     }
 
     async exec(message, args) {
-        let commands;
+        let commands = [];
 
         switch (args.option) {
             case 'interaction': {
-                commands = this.client.modules.loader.reloadAllInteractionCommands()
+                commands = this.client.util.handler.reloadAllInteractionCommands()
                 break;
             }
             case 'context': {
-                commands = this.client.modules.loader.reloadAllContextMenuCommands()
+                commands = this.client.util.handler.reloadAllContextMenuCommands()
                 break;
             }
             case 'message': {
-                commands = this.client.modules.loader.reloadAllMessageCommands()
+                commands = this.client.util.handler.reloadAllMessageCommands()
                 break;
             }
         }
 
-        message.util.reply(`Reloaded ${commands.map(command => command.name).join(', ')}`)
+        message.util.reply(`Reloaded ${commands?.map(command => command?.data?.name || command?.name || command.id)?.join(', ') || "Error"}`);
     }
 }
 
