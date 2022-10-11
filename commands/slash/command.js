@@ -1,6 +1,6 @@
-const { InteractionCommand, Discord: { EmbedBuilder } } = require('xernerx');
+import { SlashCommand, Discord } from 'xernerx';
 
-class CommandCommand extends InteractionCommand {
+export default class CommandCommand extends SlashCommand {
     constructor() {
         super('command', {
             name: 'command',
@@ -23,5 +23,3 @@ class CommandCommand extends InteractionCommand {
         await interaction.util.reply({ embeds: [embed] });
     }
 }
-
-module.exports = CommandCommand;

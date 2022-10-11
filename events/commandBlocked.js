@@ -1,6 +1,6 @@
-const { Event, Discord: { EmbedBuilder }, Discord } = require('xernerx');
+import { Event, Discord } from 'xernerx';
 
-class CommandBlockedEvent extends Event {
+export default class CommandBlockedEvent extends Event {
     constructor() {
         super('commandBlocked', {
             name: 'commandBlocked',
@@ -10,7 +10,7 @@ class CommandBlockedEvent extends Event {
     }
 
     async run(event, reason, missing) {
-        let embed = new EmbedBuilder()
+        let embed = new Discord.EmbedBuilder()
             .setTitle('Command block')
             .setColor(this.client.color.embed)
             .setTimestamp()
@@ -25,5 +25,3 @@ class CommandBlockedEvent extends Event {
         return event.util.reply({ content: null, embeds: [embed], components: null, ephemeral: true });
     }
 }
-
-module.exports = CommandBlockedEvent;

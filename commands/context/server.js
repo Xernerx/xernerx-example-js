@@ -1,6 +1,6 @@
-const { ContextMenuCommand, Discord: { EmbedBuilder, ChannelType }, reply, functions: { toPhraseCase } } = require("xernerx");
+import { ContextCommand, Discord } from "xernerx";
 
-class ServerCommand extends ContextMenuCommand {
+export default class ServerCommand extends ContextCommand {
     constructor() {
         super('server', {
             name: 'Server Info',
@@ -28,7 +28,7 @@ class ServerCommand extends ContextMenuCommand {
             else humans.push(m);
         })
 
-        let embed = new EmbedBuilder()
+        let embed = new Discord.EmbedBuilder()
             .setThumbnail(guild.iconURL({ dynamic: true }))
             .setTitle(guild.name)
             .setAuthor({ name: `${owner.username}'s server`, iconURL: owner.avatarURL({ dynamic: true }) })
@@ -70,8 +70,6 @@ class ServerCommand extends ContextMenuCommand {
                 }
             ])
 
-        interaction.util.reply({ embeds: [embed] })
+        interaction.util.reply({ embeds: [embed] });
     }
 }
-
-module.exports = ServerCommand;

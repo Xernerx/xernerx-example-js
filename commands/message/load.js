@@ -1,6 +1,6 @@
-const { MessageCommand, Discord, reply } = require('xernerx');
+import { MessageCommand } from 'xernerx';
 
-class LoadCommand extends MessageCommand {
+export default class LoadCommand extends MessageCommand {
     constructor() {
         super('load', {
             name: 'load',
@@ -35,5 +35,3 @@ class LoadCommand extends MessageCommand {
         message.util.reply(`Reloaded ${commands?.map(command => command?.data?.name || command?.name || command.id)?.join(', ') || "Error"}`);
     }
 }
-
-module.exports = LoadCommand;

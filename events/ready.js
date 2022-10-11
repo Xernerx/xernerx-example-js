@@ -1,6 +1,6 @@
-const { Event, Discord: { ActivityType } } = require('xernerx');
+import { Event, Discord } from 'xernerx';
 
-class ReadyEvent extends Event {
+export default class ReadyEvent extends Event {
     constructor() {
         super('ready', {
             name: 'ready',
@@ -26,11 +26,9 @@ class ReadyEvent extends Event {
         client.user.setPresence({
             activities: [{
                 name: `${owners[Math.floor(Math.random() * owners.length)]} develop me.`,
-                type: ActivityType.Streaming,
+                type: Discord.ActivityType.Streaming,
                 url: "https://www.youtube.com/watch?v=j-a8An12QDs"
             }]
         })
     }
 }
-
-module.exports = ReadyEvent;

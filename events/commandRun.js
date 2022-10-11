@@ -1,6 +1,6 @@
-const { Event } = require('xernerx');
+import { Event, Discord } from 'xernerx';
 
-class CommandRunEvent extends Event {
+export default class CommandRunEvent extends Event {
     constructor() {
         super('commandRun', {
             name: 'commandRun',
@@ -13,5 +13,3 @@ class CommandRunEvent extends Event {
         console.log(action.util.commandName())
     }
 }
-
-module.exports = CommandRunEvent;

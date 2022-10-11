@@ -1,10 +1,10 @@
-const { Inhibitor } = require("xernerx");
+import { Inhibitor, Discord, InhibitorType } from 'xernerx';
 
-module.exports = class MemberInhibitor extends Inhibitor {
+export default class MemberInhibitor extends Inhibitor {
     constructor() {
         super('member', {
             name: "member",
-            type: "member"
+            type: InhibitorType.Member
         })
     }
 

@@ -1,6 +1,6 @@
-const { InteractionCommand, Discord: { EmbedBuilder }, i18next } = require('xernerx');
+import { SlashCommand, Discord } from 'xernerx';
 
-class PingCommand extends InteractionCommand {
+export default class PingCommand extends SlashCommand {
     constructor() {
         super('ping', {
             name: 'ping',
@@ -25,5 +25,3 @@ class PingCommand extends InteractionCommand {
         interaction.util.reply({ embeds: [embed] })
     }
 }
-
-module.exports = PingCommand;

@@ -1,14 +1,14 @@
-const { Inhibitor } = require("xernerx");
+import { Inhibitor, Discord, InhibitorType } from 'xernerx';
 
-module.exports = class InteractionInhibitor extends Inhibitor {
+export default class InteractionInhibitor extends Inhibitor {
     constructor() {
         super('interaction', {
             name: "interaction",
-            type: "interaction"
+            type: InhibitorType.Interaction
         })
     }
 
     check(interaction) {
-        console.log("command:", interaction.util.commandName())
+        // console.log("command:", interaction.util.commandName())
     }
 }

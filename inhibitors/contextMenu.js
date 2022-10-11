@@ -1,14 +1,14 @@
-const { Inhibitor } = require("xernerx");
+import { Inhibitor, Discord, InhibitorType } from 'xernerx';
 
-module.exports = class ContextMenuInhibitor extends Inhibitor {
+export default class ContextMenuInhibitor extends Inhibitor {
     constructor() {
         super('contextMenu', {
             name: "contextMenu",
-            type: "contextMenu"
+            type: InhibitorType.ContextCommand
         })
     }
 
     check(context) {
-        console.log("command:", context.util.commandName());
+        // console.log("command:", context.util.commandName());
     }
 }

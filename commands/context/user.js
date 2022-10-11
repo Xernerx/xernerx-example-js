@@ -1,6 +1,6 @@
-const { ContextMenuCommand, Discord: { EmbedBuilder }, reply } = require("xernerx");
+import { ContextCommand, Discord } from "xernerx";
 
-class UserCommand extends ContextMenuCommand {
+export default class UserCommand extends ContextCommand {
     constructor() {
         super('user', {
             name: 'User Info',
@@ -10,8 +10,9 @@ class UserCommand extends ContextMenuCommand {
     }
 
     async exec(interaction) {
-        let member = await interaction.guild.members.fetch(interaction.targetId)
-        let embed = new EmbedBuilder()
+        let member = await interaction.guild.members.fetch(interaction.targetId);
+
+        let embed = new Discord.EmbedBuilder()
             .setTitle(member.user.username)
             .setAuthor({ name: member.nickname })
             .setThumbnail(member.user.avatarURL({ dynamic: true }))
@@ -27,5 +28,3 @@ class UserCommand extends ContextMenuCommand {
         interaction.util.reply({ embeds: [embed] })
     }
 }
-
-module.exports = UserCommand;

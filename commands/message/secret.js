@@ -1,6 +1,6 @@
-const { MessageCommand } = require('xernerx');
+import { MessageCommand } from 'xernerx';
 
-module.exports = class SecretCommand extends MessageCommand {
+export default class SecretCommand extends MessageCommand {
     constructor() {
         super('secret', {
             name: 'secret',

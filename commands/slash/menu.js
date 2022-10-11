@@ -1,6 +1,6 @@
-const { InteractionCommand, Discord: { EmbedBuilder } } = require('xernerx');
+import { SlashCommand, Discord } from 'xernerx';
 
-class MenuCommand extends InteractionCommand {
+export default class MenuCommand extends SlashCommand {
     constructor() {
         super('menu', {
             name: 'menu',
@@ -23,5 +23,3 @@ class MenuCommand extends InteractionCommand {
         interaction.util.selectMenuPaginator(embeds.slice(0, 25));
     }
 }
-
-module.exports = MenuCommand;

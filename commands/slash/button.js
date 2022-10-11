@@ -1,6 +1,6 @@
-const { InteractionCommand, Discord: { EmbedBuilder } } = require('xernerx');
+import { SlashCommand, Discord } from 'xernerx';
 
-class ButtonCommand extends InteractionCommand {
+export default class ButtonCommand extends SlashCommand {
     constructor() {
         super('button', {
             name: 'button',
@@ -20,8 +20,14 @@ class ButtonCommand extends InteractionCommand {
             embeds.push(embed);
         }
 
-        interaction.util.buttonPaginator(embeds.slice(0, 25));
+        const row = new ActionRowBuilder()
+            .addComponents(
+                new ButtonBuilder()
+                    .setCustomId('button')
+                    .setLabel('hi')
+                    .setStyle(ButtonStyle.Secondary)
+            )
+
+        interaction.util.buttonPaginator(embeds.slice(0, 25), { components: [row] });
     }
 }
-
-module.exports = ButtonCommand;

@@ -1,7 +1,6 @@
-const { MessageCommand, Discord } = require('xernerx');
-const { inspect } = require("util");
+import { MessageCommand } from 'xernerx';
 
-class PingCommand extends MessageCommand {
+export default class PingCommand extends MessageCommand {
     constructor() {
         super('ping', {
             name: 'ping',
@@ -49,13 +48,11 @@ class PingCommand extends MessageCommand {
     }
 
     async conditions(message, args) {
-        if (message.author != this.client.settings.ownerId[0]) return message.util.reply(`You're not ${(await this.client.users.fetch(this.client.settings.ownerId[0]))}`);
+        // if (message.author != this.client.settings.ownerId[0]) return message.util.reply(`You're not ${(await this.client.users.fetch(this.client.settings.ownerId[0]))}`);
     }
 
     async exec(message, args) {
-        message.util.reply({ content: "```js\n" + Object.entries(args) + "```" })
+        message.util.reply({ content: "hi" })
         console.log(args)
     }
 }
-
-module.exports = PingCommand;

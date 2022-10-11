@@ -1,14 +1,14 @@
-const { Inhibitor } = require("xernerx");
+import { Inhibitor, Discord, InhibitorType } from 'xernerx';
 
-module.exports = class MessageInhibitor extends Inhibitor {
+export default class MessageInhibitor extends Inhibitor {
     constructor() {
         super('message', {
             name: "message",
-            type: "message"
+            type: InhibitorType.Message
         })
     }
 
     check(message) {
-        console.log("command:", message.util.commandName())
+        // console.log("command:", message.util.commandName())
     }
 }

@@ -1,6 +1,6 @@
-const { MessageCommand, Discord } = require('xernerx');
+import { MessageCommand, Discord } from 'xernerx';
 
-class TestCommand extends MessageCommand {
+export default class TestCommand extends MessageCommand {
     constructor() {
         super('test', {
             name: 'test',
@@ -22,5 +22,3 @@ class TestCommand extends MessageCommand {
         message.util.buttonPaginator(embeds);
     }
 }
-
-module.exports = TestCommand;

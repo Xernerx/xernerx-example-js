@@ -1,43 +1,44 @@
-const { XernerxClient, GatewayIntentBits, i18next } = require('xernerx');
-const { prefix, guildId, ownerId, token } = require('./data/config/config.json');
+import { default as config } from './data/config/config.js';
+import { XernerxClient, Discord } from 'xernerx';
 
-const client = new XernerxClient({
-    intents: [
-        GatewayIntentBits.Guilds,
-        GatewayIntentBits.GuildMessages,
-        GatewayIntentBits.GuildVoiceStates,
-        GatewayIntentBits.MessageContent,
-        GatewayIntentBits.DirectMessages
-    ]
-}, {
-    prefix: prefix,
-    mentionPrefix: true,
-    ownerId: ownerId,
-    guildId: guildId,
-    global: false,
-    ignoreOwner: true,
-    defaultCooldown: 5000,
-    logging: ["runType", "name"],
-    defer: { reply: true, },
-    color: { embed: "#FF0000", }
-}, {
-    lang: "en",
-    fallbackLng: "en",
-    ns: "xernerx",
-}, {
-    links: { github: "https://github.com/TheDummi/example-xernerx-bot/" }
-})
+class Client extends XernerxClient {
+    constructor() {
+        super({
+            intents: [Discord.GatewayIntentBits.Guilds, Discord.GatewayIntentBits.GuildMessages, Discord.GatewayIntentBits.MessageContent]
+        }, {
+            ownerId: ["482513687417061376"],
+        })
 
-client.modules.commandHandler.loadAllInteractionCommands('commands/interaction', true);
-client.modules.commandHandler.loadAllContextMenuCommands('commands/contextMenu', true);
-client.modules.commandHandler.loadAllMessageCommands('commands/message');
+        this.modules.commandHandler.loadAllMessageCommands({
+            prefix: config.prefix,
+            directory: "./commands/message",
+            handleDeletes: true,
+            handleEdits: true,
+            allowMention: true,
+        })
 
-client.modules.inhibitorHandler.loadAllInhibitors('inhibitors');
+        this.modules.commandHandler.loadAllSlashCommands({
+            directory: "./commands/slash",
+            guildId: "784094726432489522",
+            global: false
+        })
 
-client.modules.eventHandler.loadAllEvents('events');
+        this.modules.commandHandler.loadAllSlashCommands({
+            directory: "./commands/context",
+            guildId: "784094726432489522",
+            global: false
+        })
 
-client.modules.languageHandler.loadAllLanguages('data/languages');
+        this.modules.eventHandler.loadAllEvents({
+            directory: 'events'
+        })
 
-client.t = i18next.t
+        this.modules.inhibitorHandler.loadAllInhibitors({
+            directory: 'inhibitors'
+        })
+    }
+}
 
-client.login(token);
+const client = new Client();
+
+client.login(config.token);

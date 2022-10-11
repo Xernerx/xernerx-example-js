@@ -1,6 +1,6 @@
-const { InteractionCommand, Discord: { EmbedBuilder } } = require('xernerx');
+import { SlashCommand, Discord } from 'xernerx';
 
-class argumentsCommand extends InteractionCommand {
+export default class argumentsCommand extends SlashCommand {
     constructor() {
         super('arguments', {
             name: 'arguments',
@@ -61,7 +61,7 @@ class argumentsCommand extends InteractionCommand {
             options.fields.push({ name: `${option.name} option`, value: `${description}\n> ${option.description}` })
         }
 
-        let embed = new EmbedBuilder()
+        let embed = new Discord.EmbedBuilder()
             .setTitle(this.data.name)
             .setDescription(this.data.description)
             .setURL(`${this.client.config.links.github}/blob/main/commands/interaction/${this.data.name}.js`)
@@ -73,5 +73,3 @@ class argumentsCommand extends InteractionCommand {
         interaction.util.reply({ embeds: [embed] });
     }
 }
-
-module.exports = argumentsCommand;

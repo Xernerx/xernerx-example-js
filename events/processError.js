@@ -1,6 +1,6 @@
-const { Event } = require('xernerx');
+import { Event, Discord } from 'xernerx';
 
-class ProcessErrorEvent extends Event {
+export default class ProcessErrorEvent extends Event {
     constructor() {
         super('unhandledRejection', {
             name: 'unhandledRejection',
@@ -13,5 +13,3 @@ class ProcessErrorEvent extends Event {
         console.log(error)
     }
 }
-
-module.exports = ProcessErrorEvent;

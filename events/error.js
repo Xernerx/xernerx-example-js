@@ -1,17 +1,15 @@
-const { Event } = require('xernerx');
+import { Event, Discord } from 'xernerx';
 
-class ErrorEvent extends Event {
+export default class ErrorEvent extends Event {
     constructor() {
         super('error', {
-            name: 'error',
+            name: 'commandError',
             type: "client",
             once: false
         })
     }
 
     async run(action, error) {
-        return action.util.reply(`An Error Occurred\nError:\`\`\`js\n${error.stack}\`\`\``)
+        console.log(error)
     }
 }
-
-module.exports = ErrorEvent;
