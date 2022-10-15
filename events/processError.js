@@ -10,6 +10,6 @@ export default class ProcessErrorEvent extends Event {
     }
 
     async run(error) {
-        console.log(error)
+        // console.log(error)
     }
 }

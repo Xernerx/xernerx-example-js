@@ -16,6 +16,6 @@ export default class CommandsCommand extends SlashCommand {
         //     commands.push(...cmds)
         // })
 
-        console.log(interaction.util.commandName("subcommands"))
+        // console.log(interaction.util.commandName("subcommands"))
     }
 }

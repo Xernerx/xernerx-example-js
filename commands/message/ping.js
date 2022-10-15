@@ -6,6 +6,7 @@ export default class PingCommand extends MessageCommand {
             name: 'ping',
             description: 'Pong!',
             separator: ' ',
+            owner: true,
             args: [{
                 type: "option",
                 name: "option",
@@ -53,6 +54,6 @@ export default class PingCommand extends MessageCommand {
 
     async exec(message, args) {
         message.util.reply({ content: "hi" })
-        console.log(args)
+        // console.log(args)
     }
 }

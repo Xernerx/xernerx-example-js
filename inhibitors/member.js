@@ -9,6 +9,6 @@ export default class MemberInhibitor extends Inhibitor {
     }
 
     check(event, member) {
-        console.log("nickname:", member.nickname);
+        // console.log("nickname:", member.nickname);
     }
 }

@@ -10,6 +10,6 @@ export default class CommandRunEvent extends Event {
     }
 
     async run(action, type, command) {
-        console.log(action.util.commandName())
+        // console.log(action.util.commandName())
     }
 }

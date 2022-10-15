@@ -5,7 +5,6 @@ export default class UserCommand extends ContextCommand {
         super('user', {
             name: 'User Info',
             type: "USER",
-            channel: 'guild'
         })
     }
 
@@ -25,6 +24,6 @@ export default class UserCommand extends ContextCommand {
                 { name: 'Joined', value: `<t:${Math.round(member.joinedTimestamp / 1000)}:R>` },
             ])
 
-        interaction.util.reply({ embeds: [embed] })
+        interaction.util.reply({ embeds: [embed] });
     }
 }

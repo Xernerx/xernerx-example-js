@@ -5,23 +5,26 @@ export default class PingCommand extends SlashCommand {
         super('ping', {
             name: 'ping',
             description: 'Pong!',
+            defer: {
+                reply: false
+            }
         })
     }
 
     async conditions(interaction, args) {
-        console.log('hi')
+
     }
 
     async exec(interaction) {
-        let embed = new EmbedBuilder()
+        let embed = new Discord.EmbedBuilder()
             .setTitle(this.data.name)
             .setDescription(this.data.description)
-            .setURL(`${this.client.config.links.github}/blob/main/commands/interaction/${this.data.name}.js`)
-            .setColor(this.client.color.embed)
+            .setURL(`https://github.com/TheDummi/blob/main/commands/interaction/${this.data.name}.js`)
+            .setColor("Red")
             .setTimestamp()
             .setFooter({ text: interaction.user.username, iconURL: interaction.user.avatarURL({ dynamic: true }) })
             .addFields({ name: this.data.name, value: `${this.client.ws.ping}ms.` })
-
-        interaction.util.reply({ embeds: [embed] })
+        await interaction.util.defer(1000)
+        await interaction.util.reply({ embeds: [embed] })
     }
 }

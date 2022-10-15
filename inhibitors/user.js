@@ -9,6 +9,6 @@ export default class UserInhibitor extends Inhibitor {
     }
 
     check(event, user) {
-        console.log("username:", user?.username);
+        // console.log("username:", user?.username);
     }
 }

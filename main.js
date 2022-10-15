@@ -7,6 +7,7 @@ class Client extends XernerxClient {
             intents: [Discord.GatewayIntentBits.Guilds, Discord.GatewayIntentBits.GuildMessages, Discord.GatewayIntentBits.MessageContent]
         }, {
             ownerId: ["482513687417061376"],
+            logging: true
         })
 
         this.modules.commandHandler.loadAllMessageCommands({
@@ -15,26 +16,34 @@ class Client extends XernerxClient {
             handleDeletes: true,
             handleEdits: true,
             allowMention: true,
+            logging: true
         })
 
         this.modules.commandHandler.loadAllSlashCommands({
             directory: "./commands/slash",
-            guildId: "784094726432489522",
-            global: false
+            guildId: config.guildId,
+            global: false,
+            defer: {
+                reply: true
+            },
+            logging: true
         })
 
-        this.modules.commandHandler.loadAllSlashCommands({
+        this.modules.commandHandler.loadAllContextCommands({
             directory: "./commands/context",
-            guildId: "784094726432489522",
-            global: false
+            guildId: config.guildId,
+            global: false,
+            logging: true
         })
 
         this.modules.eventHandler.loadAllEvents({
-            directory: 'events'
+            directory: './events',
+            logging: true
         })
 
         this.modules.inhibitorHandler.loadAllInhibitors({
-            directory: 'inhibitors'
+            directory: './inhibitors',
+            logging: true
         })
     }
 }

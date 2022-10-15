@@ -9,6 +9,6 @@ export default class GuildInhibitor extends Inhibitor {
     }
 
     check(event, guild) {
-        console.log("guild:", guild.name);
+        // console.log("guild:", guild.name);
     }
 }

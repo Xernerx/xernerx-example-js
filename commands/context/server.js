@@ -5,7 +5,6 @@ export default class ServerCommand extends ContextCommand {
         super('server', {
             name: 'Server Info',
             type: "MESSAGE",
-            channel: 'guild'
         })
     }
 
