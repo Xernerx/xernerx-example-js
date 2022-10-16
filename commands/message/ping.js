@@ -1,4 +1,4 @@
-import { MessageCommand } from 'xernerx';
+import { Discord, MessageCommand } from 'xernerx';
 
 export default class PingCommand extends MessageCommand {
     constructor() {
@@ -7,6 +7,11 @@ export default class PingCommand extends MessageCommand {
             description: 'Pong!',
             separator: ' ',
             owner: true,
+            channelType: Discord.ChannelType.GuildText,
+            channels: ["1029833104438861824"],
+            guilds: ["687429190165069838", "784094726432489522"],
+            cooldown: 15000,
+            userPermissions: [Discord.PermissionFlagsBits.ViewChannel, Discord.PermissionFlagsBits.SendMessages],
             args: [{
                 type: "option",
                 name: "option",

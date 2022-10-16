@@ -10,5 +10,6 @@ export default class CommandErrorEvent extends Event {
     }
 
     async run(action, error) {
+        console.log(error)
     }
 }

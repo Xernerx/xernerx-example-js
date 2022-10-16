@@ -13,12 +13,6 @@ export default class TestCommand extends MessageCommand {
     }
 
     async exec(message, args) {
-        let embeds = [];
-
-        for (let i = 0; i < 15; i++) {
-            embeds.push(new Discord.EmbedBuilder().setTitle(String(i)))
-        }
-
-        message.util.buttonPaginator(embeds);
+        message.util.reply({ content: '**TESTING!**' })
     }
 }

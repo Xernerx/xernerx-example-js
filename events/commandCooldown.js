@@ -1,4 +1,4 @@
-import { Event, Discord } from 'xernerx';
+import { Event } from 'xernerx';
 
 export default class CommandCooldownEvent extends Event {
     constructor() {
@@ -9,6 +9,7 @@ export default class CommandCooldownEvent extends Event {
         })
     }
 
-    async run(action, command, user, time) {
+    async run(action, command, user) {
+        action.util.reply({ content: `You can't use this command for another ${Object.values(this.client.util.getCooldownTimers((action.user || action.author).id, command.data?.name || command.name).shift()) / 1000}s`, ephemeral: true })
     }
 }

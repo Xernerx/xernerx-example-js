@@ -1,7 +1,7 @@
 import { default as config } from './data/config/config.js';
-import { XernerxClient, Discord } from 'xernerx';
+import Xernerx, { Discord } from 'xernerx';
 
-class Client extends XernerxClient {
+class Client extends Xernerx.Client {
     constructor() {
         super({
             intents: [Discord.GatewayIntentBits.Guilds, Discord.GatewayIntentBits.GuildMessages, Discord.GatewayIntentBits.MessageContent]
@@ -19,7 +19,8 @@ class Client extends XernerxClient {
             handleDeletes: true,
             handleEdits: true,
             allowMention: true,
-            logging: true
+            logging: true,
+            cooldown: 10000,
         })
 
         this.modules.commandHandler.loadAllSlashCommands({
@@ -29,19 +30,21 @@ class Client extends XernerxClient {
             defer: {
                 reply: true
             },
-            logging: true
+            logging: true,
+            cooldown: 10000,
         })
 
         this.modules.commandHandler.loadAllContextCommands({
             directory: "./commands/context",
             guildId: config.guildId,
             global: false,
-            logging: true
+            logging: true,
+            cooldown: 10000,
         })
 
         this.modules.eventHandler.loadAllEvents({
             directory: './events',
-            logging: true
+            logging: true,
         })
 
         this.modules.inhibitorHandler.loadAllInhibitors({

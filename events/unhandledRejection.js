@@ -10,5 +10,6 @@ export default class UnhandledRejectionEvent extends Event {
     }
 
     async run(error) {
+        console.log(error)
     }
 }
