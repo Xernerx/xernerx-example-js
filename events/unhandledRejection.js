@@ -1,15 +1,14 @@
 import { Event, Discord } from 'xernerx';
 
-export default class ProcessErrorEvent extends Event {
+export default class UnhandledRejectionEvent extends Event {
     constructor() {
         super('unhandledRejection', {
             name: 'unhandledRejection',
-            type: "process",
+            emitter: "process",
             once: false
         })
     }
 
     async run(error) {
-        // console.log(error)
     }
 }

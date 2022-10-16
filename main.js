@@ -7,6 +7,9 @@ class Client extends XernerxClient {
             intents: [Discord.GatewayIntentBits.Guilds, Discord.GatewayIntentBits.GuildMessages, Discord.GatewayIntentBits.MessageContent]
         }, {
             ownerId: ["482513687417061376"],
+            cooldown: {
+                default: 5000,
+            },
             logging: true
         })
 

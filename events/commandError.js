@@ -1,15 +1,14 @@
 import { Event, Discord } from 'xernerx';
 
-export default class ErrorEvent extends Event {
+export default class CommandErrorEvent extends Event {
     constructor() {
-        super('error', {
+        super('commandError', {
             name: 'commandError',
-            type: "client",
+            emitter: "client",
             once: false
         })
     }
 
     async run(action, error) {
-        console.log(error)
     }
 }

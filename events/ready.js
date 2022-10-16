@@ -4,7 +4,7 @@ export default class ReadyEvent extends Event {
     constructor() {
         super('ready', {
             name: 'ready',
-            type: 'client',
+            emitter: 'client',
             once: false
         })
     }

@@ -9,6 +9,5 @@ export default class InteractionInhibitor extends Inhibitor {
     }
 
     check(interaction) {
-        // console.log("command:", interaction.util.commandName())
     }
 }

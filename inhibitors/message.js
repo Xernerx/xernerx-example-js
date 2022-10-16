@@ -9,6 +9,6 @@ export default class MessageInhibitor extends Inhibitor {
     }
 
     check(message) {
-        // console.log("command:", message.util.commandName())
+
     }
 }

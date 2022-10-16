@@ -10,12 +10,5 @@ export default class CommandsCommand extends SlashCommand {
     }
 
     async exec(interaction) {
-        // const commands = [];
-
-        // (this.client.commands).map(cmds => {
-        //     commands.push(...cmds)
-        // })
-
-        // console.log(interaction.util.commandName("subcommands"))
     }
 }

@@ -49,11 +49,10 @@ export default class PingCommand extends MessageCommand {
     }
 
     async conditions(message, args) {
-        // if (message.author != this.client.settings.ownerId[0]) return message.util.reply(`You're not ${(await this.client.users.fetch(this.client.settings.ownerId[0]))}`);
+
     }
 
     async exec(message, args) {
-        message.util.reply({ content: "hi" })
-        // console.log(args)
+        message.util.reply({ content: `My ping: \`${this.client.ws.ping}ms.\`` });
     }
 }
