@@ -10,5 +10,6 @@ export default class CommandsCommand extends SlashCommand {
     }
 
     async exec(interaction) {
+        console.log(interaction.util.getCommands())
     }
 }

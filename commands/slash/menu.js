@@ -12,8 +12,14 @@ export default class MenuCommand extends SlashCommand {
     async exec(interaction) {
         let embeds = [];
 
-        for (const channel of (await interaction.guild.channels.fetch()).values()) {
-            let embed = new EmbedBuilder()
+        const channels = [];
+
+        for (let i = 1; i < 10; i++) {
+            channels.push({ name: `channel-${i}`, topic: `This is channel ${i}!` });
+        }
+
+        for (const channel of channels) {
+            let embed = new Discord.EmbedBuilder()
                 .setTitle(channel.name || "None")
                 .setDescription(channel.topic || "None")
 

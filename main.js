@@ -4,14 +4,14 @@ import Xernerx, { Discord } from 'xernerx';
 class Client extends Xernerx.Client {
     constructor() {
         super({
-            intents: [Discord.GatewayIntentBits.Guilds, Discord.GatewayIntentBits.GuildMessages, Discord.GatewayIntentBits.MessageContent]
+            intents: [Discord.GatewayIntentBits.Guilds, Discord.GatewayIntentBits.GuildMessages, Discord.GatewayIntentBits.MessageContent],
         }, {
             ownerId: ["482513687417061376"],
             cooldown: {
                 default: 5000,
             },
             logging: true
-        })
+        }, config)
 
         this.modules.commandHandler.loadAllMessageCommands({
             prefix: config.prefix,

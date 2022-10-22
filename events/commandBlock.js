@@ -1,5 +1,5 @@
 import { Event, Discord } from 'xernerx';
-import { inspect } from 'util';
+
 export default class CommandBlockEvent extends Event {
     constructor() {
         super('commandBlock', {
@@ -9,7 +9,22 @@ export default class CommandBlockEvent extends Event {
         })
     }
 
-    async run(event, reason, missing) {
-        event.reply({ content: `block, ${reason}, ${missing}`, ephemeral: true })
+    run(event, reason, missing) {
+        const embed = new Discord.EmbedBuilder()
+            .setTitle("Command Block")
+            .setURL(`${this.client.config.links.js}/events/${this.name}.js`)
+            .setDescription(`Your command has been blocked because of ${reason}`)
+            .setColor(this.client.config.color)
+            .setFooter({ text: (event.user || event.author).username, iconUrl: (event.user || event.author).avatarURL({ dynamic: true }) })
+            .setTimestamp()
+
+        if (Array.isArray(missing)) {
+            embed.addFields([{ name: "You're missing the following", value: missing.join(', '), inline: true }]);
+        }
+        else {
+            embed.addFields([{ name: "You're missing the following", value: String(missing), inline: true }]);
+        }
+
+        event.util.reply({ embeds: [embed], ephemeral: true });
     }
 }

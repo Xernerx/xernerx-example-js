@@ -8,7 +8,7 @@ export default class GroupsCommand extends SlashCommand {
             groups: [{
                 name: 'group',
                 description: 'group',
-                subs: [{
+                subcommands: [{
                     name: 'name',
                     description: 'Get the command\'s name.'
                 }, {

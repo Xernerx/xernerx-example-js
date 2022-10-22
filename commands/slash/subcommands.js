@@ -5,7 +5,7 @@ export default class SubcommandCommand extends SlashCommand {
         super('subcommands', {
             name: 'subcommands',
             description: 'A command with subcommands.',
-            subs: [{
+            subcommands: [{
                 name: 'name',
                 description: 'Get the command\'s name.'
             }, {
