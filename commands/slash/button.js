@@ -13,21 +13,13 @@ export default class ButtonCommand extends SlashCommand {
         let embeds = [];
 
         for (const channel of (await interaction.guild.channels.fetch()).values()) {
-            let embed = new EmbedBuilder()
+            let embed = new Discord.EmbedBuilder()
                 .setTitle(channel.name || "None")
                 .setDescription(channel.topic || "None")
 
             embeds.push(embed);
         }
 
-        const row = new ActionRowBuilder()
-            .addComponents(
-                new ButtonBuilder()
-                    .setCustomId('button')
-                    .setLabel('hi')
-                    .setStyle(ButtonStyle.Secondary)
-            )
-
-        interaction.util.buttonPaginator(embeds.slice(0, 25), { components: [row] });
+        interaction.util.buttonPaginator(embeds.slice(0, 25));
     }
 }

@@ -1,7 +1,7 @@
 import { default as config } from './data/config/config.js';
 import Xernerx, { Discord } from 'xernerx';
 
-class Client extends Xernerx.Client {
+new class Client extends Xernerx.Client {
     constructor() {
         super({
             intents: [Discord.GatewayIntentBits.Guilds, Discord.GatewayIntentBits.GuildMessages, Discord.GatewayIntentBits.MessageContent],
@@ -20,7 +20,7 @@ class Client extends Xernerx.Client {
             handleEdits: true,
             allowMention: true,
             logging: true,
-            cooldown: 10000,
+            cooldown: 2000,
         })
 
         this.modules.commandHandler.loadAllSlashCommands({
@@ -31,7 +31,7 @@ class Client extends Xernerx.Client {
                 reply: true
             },
             logging: true,
-            cooldown: 10000,
+            cooldown: 2000,
         })
 
         this.modules.commandHandler.loadAllContextCommands({
@@ -39,7 +39,7 @@ class Client extends Xernerx.Client {
             guildId: config.guildId,
             global: false,
             logging: true,
-            cooldown: 10000,
+            cooldown: 2000,
         })
 
         this.modules.eventHandler.loadAllEvents({
@@ -51,9 +51,17 @@ class Client extends Xernerx.Client {
             directory: './inhibitors',
             logging: true
         })
+
+        this.modules.webhookHandler.post({
+            token: "BotTopGGToken",
+            logging: true
+        })
+
+        this.modules.webhookHandler.vote({
+            token: "WebhookAuthToken",
+            logging: true
+        })
+
+        this.register(config.token);
     }
 }
-
-const client = new Client();
-
-client.login(config.token);
