@@ -1,11 +1,12 @@
 {
-	"name": "xernerx-example-bot",
+	"name": "xernerx-example-bot-js",
 	"version": "1.0.5",
 	"type": "module",
 	"description": "A javascript example bot for the xernerx framework.",
 	"main": "main.js",
 	"keywords": [
-		"bot"
+		"bot",
+		"javascript"
 	],
 	"author": "Dummi",
 	"license": "MIT",
@@ -14,12 +15,20 @@
 		"checks": "npm i && npm audit fix --force && npm fund && npm link xernerx && nodemon",
 		"patch": "git add . && git commit -m \"Version Patch\"  && npm version patch && git push",
 		"minor": "git add . && git commit -m \"Version Upgrade\" && npm version minor && git push",
-		"major": "git add . && git commit -m \"Version Rewrite\" && npm version major && git push"
+		"major": "git add . && git commit -m \"Version Rewrite\" && npm version major && git push",
+		"latest": "npm i xernerx@latest xernerx-language@latest xernerx-commands@latest xernerx-poster@latest && npm run checks"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/TheDummi/xernerx-example-js.git"
+	},
+	"bugs": {
+		"url": "https://github.com/TheDummi/xernerx-example-js/issues"
 	},
 	"dependencies": {
-		"xernerx": "^3.2.2",
-		"xernerx-commands": "^0.0.1",
-		"xernerx-language": "^0.0.2",
-		"xernerx-poster": "^0.0.2"
+		"xernerx": "^3.2.4",
+		"xernerx-commands": "^0.0.5",
+		"xernerx-language": "^0.0.4",
+		"xernerx-poster": "^0.0.4"
 	}
 }
