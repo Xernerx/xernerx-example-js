@@ -1,16 +1,25 @@
 {
 	"name": "xernerx-example-bot",
 	"version": "1.0.3",
-	"description": "",
+	"type": "module",
+	"description": "A javascript example bot for the xernerx framework.",
 	"main": "main.js",
+	"keywords": [
+		"bot"
+	],
+	"author": "Dummi",
+	"license": "MIT",
+	"homepage": "https://thedummi.github.io/xernerx/home.html",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"checks": "npm i && npm audit fix --force && npm fund && npm link xernerx && nodemon",
+		"patch": "git add . && git commit -m \"Version Patch\" && npm version patch && npm publish",
+		"minor": "git add . && git commit -m \"Version Upgrade\" && npm version minor && npm publish",
+		"major": "git add . && git commit -m \"Version Rewrite\" && npm version major && npm publish"
 	},
-	"keywords": [],
-	"author": "",
-	"license": "ISC",
 	"dependencies": {
-		"got": "^11.8.5"
-	},
-	"type": "module"
+		"xernerx": "^3.2.2",
+		"xernerx-commands": "^0.0.1",
+		"xernerx-language": "^0.0.2",
+		"xernerx-poster": "^0.0.2"
+	}
 }

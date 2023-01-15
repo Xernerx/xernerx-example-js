@@ -1,5 +1,9 @@
-import { default as config } from './data/config/config.js';
 import Xernerx, { Discord } from 'xernerx';
+import { XernerxCommands } from 'xernerx-commands';
+import { XernerxLanguage } from 'xernerx-language';
+import { XernerxPoster } from 'xernerx-poster';
+
+import config from './data/config/config.js';
 
 new class Client extends Xernerx.Client {
     constructor() {
@@ -52,16 +56,17 @@ new class Client extends Xernerx.Client {
             logging: true
         })
 
-        this.modules.webhookHandler.post({
-            token: "BotTopGGToken",
-            logging: true
-        })
-
-        this.modules.webhookHandler.vote({
-            token: "WebhookAuthToken",
-            logging: true
-        })
-
         this.register(config.token);
+
+        this.loadExtensions({
+            extensions: [
+                new XernerxCommands(this, {
+                    prefix: 'xc'
+                }),
+                new XernerxLanguage(this),
+                new XernerxPoster(this)
+            ],
+            logging: true
+        });
     }
 }

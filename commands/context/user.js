@@ -1,10 +1,10 @@
-import { ContextCommand, Discord } from "xernerx";
+import { ContextCommand, ContextCommandType, Discord } from "xernerx";
 
 export default class UserCommand extends ContextCommand {
     constructor() {
         super('user', {
             name: 'User Info',
-            type: "USER",
+            type: ContextCommandType.User,
         })
     }
 
