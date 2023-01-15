@@ -1,6 +1,6 @@
 {
 	"name": "xernerx-example-bot",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"type": "module",
 	"description": "A javascript example bot for the xernerx framework.",
 	"main": "main.js",
