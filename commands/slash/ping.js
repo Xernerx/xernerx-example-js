@@ -1,6 +1,6 @@
-import { SlashCommand, Discord } from 'xernerx';
+import { SlashCommandBuilder, Discord } from 'xernerx';
 
-export default class PingCommand extends SlashCommand {
+export default class PingCommand extends SlashCommandBuilder {
     constructor() {
         super('ping', {
             name: 'ping',

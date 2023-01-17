@@ -1,6 +1,6 @@
-import { MessageCommand } from 'xernerx';
+import { MessageCommandBuilder } from 'xernerx';
 
-export default class LoadCommand extends MessageCommand {
+export default class LoadCommand extends MessageCommandBuilder {
     constructor() {
         super('load', {
             name: 'load',

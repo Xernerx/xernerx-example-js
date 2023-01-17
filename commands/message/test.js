@@ -1,6 +1,6 @@
-import { MessageCommand, Discord } from 'xernerx';
+import { MessageCommandBuilder, Discord } from 'xernerx';
 
-export default class TestCommand extends MessageCommand {
+export default class TestCommand extends MessageCommandBuilder {
     constructor() {
         super('test', {
             name: 'test',

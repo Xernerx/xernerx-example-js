@@ -1,6 +1,6 @@
-import { SlashCommand, Discord } from 'xernerx';
+import { SlashCommandBuilder, Discord } from 'xernerx';
 
-export default class CommandCommand extends SlashCommand {
+export default class CommandCommand extends SlashCommandBuilder {
     constructor() {
         super('command', {
             name: 'command',

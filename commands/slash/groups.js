@@ -1,6 +1,6 @@
-import { SlashCommand, Discord } from 'xernerx';
+import { SlashCommandBuilder, Discord } from 'xernerx';
 
-export default class GroupsCommand extends SlashCommand {
+export default class GroupsCommand extends SlashCommandBuilder {
     constructor() {
         super('groups', {
             name: 'groups',

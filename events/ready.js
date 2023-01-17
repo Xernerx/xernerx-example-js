@@ -1,6 +1,6 @@
-import { Event, Discord } from 'xernerx';
+import { EventBuilder, Discord } from 'xernerx';
 
-export default class ReadyEvent extends Event {
+export default class ReadyEvent extends EventBuilder {
     constructor() {
         super('ready', {
             name: 'ready',

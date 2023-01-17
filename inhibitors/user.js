@@ -1,6 +1,6 @@
-import { Inhibitor, Discord, InhibitorType } from 'xernerx';
+import { InhibitorBuilder, Discord, InhibitorType } from 'xernerx';
 
-export default class UserInhibitor extends Inhibitor {
+export default class UserInhibitor extends InhibitorBuilder {
     constructor() {
         super('user', {
             name: "user",

@@ -1,6 +1,6 @@
-import { MessageCommand } from 'xernerx';
+import { MessageCommandBuilder } from 'xernerx';
 
-export default class XernerxCommand extends MessageCommand {
+export default class XernerxCommand extends MessageCommandBuilder {
     constructor() {
         super('xernerx', {
             name: "xernerx",

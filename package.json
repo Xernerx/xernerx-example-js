@@ -16,7 +16,7 @@
 		"patch": "git add . && git commit -m \"Version Patch\"  && npm version patch && git push",
 		"minor": "git add . && git commit -m \"Version Upgrade\" && npm version minor && git push",
 		"major": "git add . && git commit -m \"Version Rewrite\" && npm version major && git push",
-		"latest": "npm i xernerx@latest xernerx-language@latest xernerx-commands@latest xernerx-poster@latest && npm run checks"
+		"latest": "npm i xernerx-language@latest xernerx-commands@latest xernerx-poster@latest && npm run checks"
 	},
 	"repository": {
 		"type": "git",
@@ -26,8 +26,7 @@
 		"url": "https://github.com/TheDummi/xernerx-example-js/issues"
 	},
 	"dependencies": {
-		"xernerx": "^3.2.4",
-		"xernerx-commands": "^0.0.5",
+		"xernerx-commands": "^0.0.6",
 		"xernerx-language": "^0.0.4",
 		"xernerx-poster": "^0.0.4"
 	}

@@ -22,6 +22,7 @@ new class Client extends Xernerx.Client {
             directory: "./commands/message",
             handleDeletes: true,
             handleEdits: true,
+            handleTyping: true,
             allowMention: true,
             logging: true,
             cooldown: 2000,
@@ -61,7 +62,8 @@ new class Client extends Xernerx.Client {
         this.loadExtensions({
             extensions: [
                 new XernerxCommands(this, {
-                    prefix: 'xc'
+                    prefix: 'xc',
+                    exclude: ["ping"]
                 }),
                 new XernerxLanguage(this),
                 new XernerxPoster(this)

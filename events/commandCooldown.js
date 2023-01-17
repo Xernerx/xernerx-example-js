@@ -1,6 +1,6 @@
-import { Event } from 'xernerx';
+import { EventBuilder } from 'xernerx';
 
-export default class CommandCooldownEvent extends Event {
+export default class CommandCooldownEvent extends EventBuilder {
     constructor() {
         super('commandCooldown', {
             name: 'commandCooldown',

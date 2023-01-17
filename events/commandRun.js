@@ -1,6 +1,6 @@
-import { Event, Discord } from 'xernerx';
+import { EventBuilder, Discord } from 'xernerx';
 
-export default class CommandRunEvent extends Event {
+export default class CommandRunEvent extends EventBuilder {
     constructor() {
         super('commandRun', {
             name: 'commandRun',

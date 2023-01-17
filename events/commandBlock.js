@@ -1,6 +1,6 @@
-import { Event, Discord } from 'xernerx';
+import { EventBuilder, Discord } from 'xernerx';
 
-export default class CommandBlockEvent extends Event {
+export default class CommandBlockEvent extends EventBuilder {
     constructor() {
         super('commandBlock', {
             name: 'commandBlock',

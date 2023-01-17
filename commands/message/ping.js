@@ -1,6 +1,6 @@
-import { Discord, MessageCommand } from 'xernerx';
+import { Discord, MessageCommandBuilder } from 'xernerx';
 
-export default class PingCommand extends MessageCommand {
+export default class PingCommand extends MessageCommandBuilder {
     constructor() {
         super('ping', {
             name: 'ping',
