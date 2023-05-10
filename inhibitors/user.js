@@ -1,13 +1,15 @@
-import { InhibitorBuilder, Discord, InhibitorType } from 'xernerx';
+import { InhibitorBuilder } from 'xernerx';
 
 export default class UserInhibitor extends InhibitorBuilder {
-    constructor() {
-        super('user', {
-            name: "user",
-            type: InhibitorType.User
-        })
-    }
+	constructor() {
+		super('user', {
+			name: 'user',
+			type: 'user',
+		});
+	}
 
-    check(event, user) {
-    }
+	check(action, user) {
+		// console.log(user);
+		// return action.util.reply(String(action.user.id === action.user.id));
+	}
 }

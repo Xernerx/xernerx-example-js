@@ -1,13 +1,14 @@
-import { InhibitorBuilder, Discord, InhibitorType } from 'xernerx';
+import { InhibitorBuilder } from 'xernerx';
 
 export default class GuildInhibitor extends InhibitorBuilder {
-    constructor() {
-        super('guild', {
-            name: "guild",
-            type: InhibitorType.Guild
-        })
-    }
+	constructor() {
+		super('guild', {
+			name: 'guild',
+			type: 'guild',
+		});
+	}
 
-    check(event, guild) {
-    }
+	check(action, guild) {
+		// console.log(guild);
+	}
 }

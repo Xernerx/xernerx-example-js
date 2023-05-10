@@ -1,4 +1,4 @@
-import { EventBuilder, Discord } from 'xernerx';
+import { EventBuilder } from 'xernerx';
 
 export default class CommandErrorEvent extends EventBuilder {
     constructor() {

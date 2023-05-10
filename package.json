@@ -12,11 +12,15 @@
 	"license": "MIT",
 	"homepage": "https://thedummi.github.io/xernerx/home.html",
 	"scripts": {
-		"start": "npm i && npm audit fix --force && npm fund && npm link xernerx && nodemon",
+		"start": "npm i && npm audit fix --force && npm fund && nodemon",
+		"framework": "npm run extensions && npm rm xernerx && npm update --force && npm start",
+		"database": "npm run extensions && npm i xernerx && npm rm xernerx-database && npm update --force && npm link xernerx-database && npm start",
+		"language": "npm run extensions && npm i xernerx && npm rm xernerx-language && npm update --force && npm link xernerx-language && npm start",
+		"commands": "npm run extensions && npm i xernerx && npm rm xernerx-commands && npm update --force && npm link xernerx-commands && npm start",
+		"extensions": "npm i xernerx-language@latest xernerx-commands@latest xernerx-database@latest",
 		"patch": "git add . && git commit -m \"Version Patch\"  && npm version patch && git push",
 		"minor": "git add . && git commit -m \"Version Upgrade\" && npm version minor && git push",
-		"major": "git add . && git commit -m \"Version Rewrite\" && npm version major && git push",
-		"latest": "npm i xernerx-language@latest xernerx-commands@latest xernerx-poster@latest && npm run checks"
+		"major": "git add . && git commit -m \"Version Rewrite\" && npm version major && git push"
 	},
 	"repository": {
 		"type": "git",
@@ -26,7 +30,8 @@
 		"url": "https://github.com/TheDummi/xernerx-example-js/issues"
 	},
 	"dependencies": {
-		"xernerx-commands": "^0.0.6",
-		"xernerx-language": "^0.0.4"
+		"xernerx-commands": "^0.0.15",
+		"xernerx-database": "^0.0.5",
+		"xernerx-language": "^0.0.5"
 	}
 }

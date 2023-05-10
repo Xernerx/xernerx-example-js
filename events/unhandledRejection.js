@@ -1,15 +1,15 @@
-import { EventBuilder, Discord } from 'xernerx';
+import { EventBuilder } from 'xernerx';
 
 export default class UnhandledRejectionEvent extends EventBuilder {
-    constructor() {
-        super('unhandledRejection', {
-            name: 'unhandledRejection',
-            emitter: "process",
-            once: false
-        })
-    }
+	constructor() {
+		super('unhandledRejection', {
+			name: 'unhandledRejection',
+			emitter: 'process',
+			once: false,
+		});
+	}
 
-    async run(error) {
-        console.log(error)
-    }
+	async run(error) {
+		console.log(error);
+	}
 }
