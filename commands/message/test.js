@@ -1,18 +1,15 @@
-import { MessageCommandBuilder, Discord } from 'xernerx';
+import { MessageCommandBuilder } from 'xernerx';
 
 export default class TestCommand extends MessageCommandBuilder {
-    constructor() {
-        super('test', {
-            name: 'test',
-            description: 'Pong!',
-            args: [{
-                name: 'test',
-                type: 'user'
-            }]
-        })
-    }
+	constructor() {
+		super('test', {
+			name: 'test',
+			aliases: ['tast'],
+			description: 'A test command for new features.',
+		});
+	}
 
-    async exec(message, args) {
-        message.util.reply({ content: '**TESTING!**' })
-    }
+	async exec(message) {
+		return await message.util.reply({ content: String(message.util.parsed.alias) });
+	}
 }

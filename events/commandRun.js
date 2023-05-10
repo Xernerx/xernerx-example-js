@@ -1,4 +1,4 @@
-import { EventBuilder, Discord } from 'xernerx';
+import { EventBuilder } from 'xernerx';
 
 export default class CommandRunEvent extends EventBuilder {
     constructor() {

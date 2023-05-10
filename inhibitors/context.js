@@ -1,13 +1,14 @@
-import { InhibitorBuilder, Discord, InhibitorType } from 'xernerx';
+import { InhibitorBuilder } from 'xernerx';
 
 export default class ContextInhibitor extends InhibitorBuilder {
-    constructor() {
-        super('context', {
-            name: "context",
-            type: InhibitorType.ContextCommand
-        })
-    }
+	constructor() {
+		super('context', {
+			name: 'context',
+			type: 'contextCommand',
+		});
+	}
 
-    check(context) {
-    }
+	check(action, command) {
+		// console.log(command);
+	}
 }

@@ -1,13 +1,14 @@
-import { InhibitorBuilder, Discord, InhibitorType } from 'xernerx';
+import { InhibitorBuilder } from 'xernerx';
 
 export default class MemberInhibitor extends InhibitorBuilder {
-    constructor() {
-        super('member', {
-            name: "member",
-            type: InhibitorType.Member
-        })
-    }
+	constructor() {
+		super('member', {
+			name: 'member',
+			type: 'member',
+		});
+	}
 
-    check(event, member) {
-    }
+	check(action, member) {
+		// console.log(member);
+	}
 }
