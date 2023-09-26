@@ -1,6 +1,8 @@
-import { EventBuilder, EmbedBuilder } from 'xernerx';
+/** @format */
 
-export default class CommandBlockEvent extends EventBuilder {
+import { XernerxEvent, EmbedBuilder } from 'xernerx';
+
+export default class CommandBlockEvent extends XernerxEvent {
 	constructor() {
 		super('commandBlock', {
 			name: 'commandBlock',
@@ -9,23 +11,18 @@ export default class CommandBlockEvent extends EventBuilder {
 		});
 	}
 
-	run(event, reason, missing) {
+	run(event, info, command) {
+		console.log(info);
 		const embed = new EmbedBuilder()
 			.setTitle('Command Block')
-			.setURL(`${this.client.config.links.js}/events/${this.name}.js`)
-			.setDescription(`Your command has been blocked because of ${reason}`)
-			.setColor(this.client.config.color)
+			// .setURL(`${this.client.config.links.js}/events/${this.name}.js`)
+			.setDescription(info.message)
+			// .setColor(this.client.config.color)
 			.setFooter({
 				text: (event.user || event.author).username,
 				iconUrl: (event.user || event.author).avatarURL({ dynamic: true }),
 			})
 			.setTimestamp();
-
-		if (Array.isArray(missing)) {
-			embed.addFields([{ name: "You're missing the following", value: missing.join(', '), inline: true }]);
-		} else {
-			embed.addFields([{ name: "You're missing the following", value: String(missing), inline: true }]);
-		}
 
 		event.util.reply({ embeds: [embed], ephemeral: true });
 	}

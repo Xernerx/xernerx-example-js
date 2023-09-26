@@ -1,6 +1,6 @@
-import { EventBuilder } from 'xernerx';
+import { XernerxEvent } from 'xernerx';
 
-export default class MessageCreateEvent extends EventBuilder {
+export default class MessageCreateEvent extends XernerxEvent {
 	constructor() {
 		super('messageCreate', {
 			name: 'messageCreate',

@@ -1,6 +1,6 @@
-import { EmbedBuilder, SlashCommandBuilder } from 'xernerx';
+import { EmbedBuilder, XernerxSlashCommand } from 'xernerx';
 
-export default class PingCommand extends SlashCommandBuilder {
+export default class PingCommand extends XernerxSlashCommand {
 	constructor() {
 		super('ping', {
 			name: 'ping',

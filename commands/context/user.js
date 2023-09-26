@@ -1,6 +1,8 @@
-import { ContextCommandBuilder, EmbedBuilder } from 'xernerx';
+/** @format */
 
-export default class UserCommand extends ContextCommandBuilder {
+import { XernerxContextCommand, EmbedBuilder } from 'xernerx';
+
+export default class UserCommand extends XernerxContextCommand {
 	constructor() {
 		super('user', {
 			name: 'User Info',
@@ -24,6 +26,6 @@ export default class UserCommand extends ContextCommandBuilder {
 				{ name: 'Joined', value: `<t:${Math.round(member.joinedTimestamp / 1000)}:R>` },
 			]);
 
-		interaction.util.reply({ embeds: [embed] });
+		this.util.reply({ embeds: [embed] });
 	}
 }

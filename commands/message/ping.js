@@ -1,6 +1,6 @@
-import { MessageCommandBuilder } from 'xernerx';
+import { XernerxMessageCommand } from 'xernerx';
 
-export default class PingCommand extends MessageCommandBuilder {
+export default class PingCommand extends XernerxMessageCommand {
 	constructor() {
 		super('ping', {
 			name: 'ping',

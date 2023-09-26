@@ -1,6 +1,6 @@
-import { InhibitorBuilder } from 'xernerx';
+import { XernerxInhibitor } from 'xernerx';
 
-export default class ContextInhibitor extends InhibitorBuilder {
+export default class ContextInhibitor extends XernerxInhibitor {
 	constructor() {
 		super('context', {
 			name: 'context',

@@ -12,7 +12,7 @@
 	"license": "MIT",
 	"homepage": "https://thedummi.github.io/xernerx/home.html",
 	"scripts": {
-		"start": "npm i && npm audit fix --force && npm fund && nodemon",
+		"start": "npm i && npm link xernerx && npm fund && nodemon",
 		"framework": "npm run extensions && npm rm xernerx && npm update --force && npm start",
 		"database": "npm run extensions && npm i xernerx && npm rm xernerx-database && npm update --force && npm link xernerx-database && npm start",
 		"language": "npm run extensions && npm i xernerx && npm rm xernerx-language && npm update --force && npm link xernerx-language && npm start",
@@ -28,10 +28,5 @@
 	},
 	"bugs": {
 		"url": "https://github.com/TheDummi/xernerx-example-js/issues"
-	},
-	"dependencies": {
-		"xernerx-commands": "^0.0.15",
-		"xernerx-database": "^0.0.5",
-		"xernerx-language": "^0.0.5"
 	}
 }

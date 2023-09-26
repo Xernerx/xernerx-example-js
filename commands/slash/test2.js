@@ -1,6 +1,6 @@
-import { EmbedBuilder, SlashCommandBuilder } from 'xernerx';
+import { EmbedBuilder, XernerxSlashCommand } from 'xernerx';
 
-export default class Test2Command extends SlashCommandBuilder {
+export default class Test2Command extends XernerxSlashCommand {
 	constructor() {
 		super('test2', {
 			name: 'test2',

@@ -1,6 +1,6 @@
-import { InhibitorBuilder } from 'xernerx';
+import { XernerxInhibitor } from 'xernerx';
 
-export default class MessageInhibitor extends InhibitorBuilder {
+export default class MessageInhibitor extends XernerxInhibitor {
 	constructor() {
 		super('message', {
 			name: 'message',

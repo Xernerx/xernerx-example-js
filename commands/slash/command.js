@@ -1,6 +1,6 @@
-import { SlashCommandBuilder } from 'xernerx';
+import { XernerxSlashCommand } from 'xernerx';
 
-export default class CommandCommand extends SlashCommandBuilder {
+export default class CommandCommand extends XernerxSlashCommand {
 	constructor() {
 		super('command', {
 			name: 'command',

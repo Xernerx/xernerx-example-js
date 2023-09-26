@@ -1,6 +1,6 @@
-import { SlashCommandBuilder, EmbedBuilder } from 'xernerx';
+import { XernerxSlashCommand, EmbedBuilder } from 'xernerx';
 
-export default class GroupsCommand extends SlashCommandBuilder {
+export default class GroupsCommand extends XernerxSlashCommand {
 	constructor() {
 		super('groups', {
 			name: 'groups',

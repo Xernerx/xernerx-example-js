@@ -1,6 +1,6 @@
-import { EventBuilder } from 'xernerx';
+import { XernerxEvent } from 'xernerx';
 
-export default class CommandErrorEvent extends EventBuilder {
+export default class CommandErrorEvent extends XernerxEvent {
     constructor() {
         super('commandError', {
             name: 'commandError',

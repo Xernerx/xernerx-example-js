@@ -1,6 +1,6 @@
-import { ContextCommandBuilder } from 'xernerx';
+import { XernerxContextCommand } from 'xernerx';
 
-export default class ServerCommand extends ContextCommandBuilder {
+export default class ServerCommand extends XernerxContextCommand {
 	constructor() {
 		super('server', {
 			name: 'Server Info',

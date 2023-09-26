@@ -1,15 +1,22 @@
-import { MessageCommandBuilder } from 'xernerx';
+/** @format */
 
-export default class LoadCommand extends MessageCommandBuilder {
+import { XernerxMessageCommand } from 'xernerx';
+
+export default class LoadCommand extends XernerxMessageCommand {
 	constructor() {
 		super('load', {
 			name: 'load',
 			description: 'Load/reload/unload modules.',
 			aliases: ['reload'],
+			ignore: {
+				owner: true,
+			},
 		});
 	}
 
 	async exec(message) {
-		// One day I'll add this one :)
+		this.client.modules.commandHandler.reloadMessageCommands();
+
+		this.util.reply({ content: 'reloaded!' });
 	}
 }

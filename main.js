@@ -1,7 +1,6 @@
-import { XernerxClient, GatewayIntentBits, ExtensionBuilder } from 'xernerx';
-// import { XernerxCommands } from 'xernerx-commands';
-// import XernerxLanguage from 'xernerx-language';
-// import XernerxDatabase from 'xernerx-database';
+/** @format */
+
+import { XernerxClient, XernerxIntents } from 'xernerx';
 
 import config from './data/config/config.js';
 
@@ -9,14 +8,19 @@ new (class Client extends XernerxClient {
 	constructor() {
 		super(
 			{
-				intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent],
+				intents: XernerxIntents.All,
 			},
 			{
 				ownerId: ['482513687417061376'],
 				local: '784094726432489522',
 				global: false,
+				permissions: {
+					// client: ['manage channels', 'ban members', 'add reactions'],
+					user: ['administrator'],
+				},
 				cooldown: {
-					default: 5000,
+					default: 35000,
+					collections: ['users'],
 				},
 				log: {
 					ready: true,
@@ -35,7 +39,7 @@ new (class Client extends XernerxClient {
 			handleEdits: true,
 			handleTyping: true,
 			allowMention: true,
-			logging: true,
+			cooldown: 45000,
 		});
 
 		this.modules.commandHandler.loadSlashCommands({
@@ -67,28 +71,10 @@ new (class Client extends XernerxClient {
 			logging: true,
 		});
 
-		this.modules.extensionHandler.loadExtensions(new ExtensionBuilder('test'));
-
 		// this.modules.webhookHandler.loadWebhooks({
 		// 	token: config.webhook.topgg.token,
 		// });
 
-		this.connect(config.token1);
-
-		// this.loadAllExtensions({
-		// 	extensions: [
-		// 		new XernerxCommands(this, {
-		// 			prefix: 'xc',
-		// 			exclude: ['ping'],
-		// 		}),
-		// 		new XernerxLanguage(this, {
-		// 			directory: './data/languages',
-		// 		}),
-		// 		new XernerxDatabase.default(this, {
-		// 			builder: './build',
-		// 		}),
-		// 	],
-		// 	logging: true,
-		// });
+		this.connect(config.token);
 	}
 })();

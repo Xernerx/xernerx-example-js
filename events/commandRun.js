@@ -1,6 +1,6 @@
-import { EventBuilder } from 'xernerx';
+import { XernerxEvent } from 'xernerx';
 
-export default class CommandRunEvent extends EventBuilder {
+export default class CommandRunEvent extends XernerxEvent {
     constructor() {
         super('commandRun', {
             name: 'commandRun',

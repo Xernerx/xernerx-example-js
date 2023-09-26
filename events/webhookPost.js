@@ -1,6 +1,6 @@
-import { EventBuilder } from 'xernerx';
+import { XernerxEvent } from 'xernerx';
 
-export default class WebhookPostEvent extends EventBuilder {
+export default class WebhookPostEvent extends XernerxEvent {
 	constructor() {
 		super('webhookPost', {
 			name: 'webhookPost',

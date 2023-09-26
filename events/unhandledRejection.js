@@ -1,6 +1,6 @@
-import { EventBuilder } from 'xernerx';
+import { XernerxEvent } from 'xernerx';
 
-export default class UnhandledRejectionEvent extends EventBuilder {
+export default class UnhandledRejectionEvent extends XernerxEvent {
 	constructor() {
 		super('unhandledRejection', {
 			name: 'unhandledRejection',

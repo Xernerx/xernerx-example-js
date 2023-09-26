@@ -1,6 +1,6 @@
-import { SlashCommandBuilder, EmbedBuilder } from 'xernerx';
+import { XernerxSlashCommand, EmbedBuilder } from 'xernerx';
 
-export default class MenuCommand extends SlashCommandBuilder {
+export default class MenuCommand extends XernerxSlashCommand {
 	constructor() {
 		super('menu', {
 			name: 'menu',

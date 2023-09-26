@@ -1,6 +1,6 @@
-import { InhibitorBuilder } from 'xernerx';
+import { XernerxInhibitor } from 'xernerx';
 
-export default class MemberInhibitor extends InhibitorBuilder {
+export default class MemberInhibitor extends XernerxInhibitor {
 	constructor() {
 		super('member', {
 			name: 'member',
