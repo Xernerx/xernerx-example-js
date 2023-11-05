@@ -14,6 +14,7 @@ new (class Client extends XernerxClient {
 				ownerId: ['482513687417061376'],
 				local: '784094726432489522',
 				global: false,
+				ceaseless: true,
 				permissions: {
 					// client: ['manage channels', 'ban members', 'add reactions'],
 					user: ['administrator'],
@@ -22,12 +23,7 @@ new (class Client extends XernerxClient {
 					default: 35000,
 					collections: ['users'],
 				},
-				log: {
-					ready: true,
-					info: true,
-					error: true,
-					// table: ['name', 'fileType'],
-				},
+				log: true,
 			},
 			config
 		);
@@ -46,9 +42,9 @@ new (class Client extends XernerxClient {
 			directory: './commands/slash',
 			guildId: config.guildId,
 			global: false,
-			defer: {
-				reply: true,
-			},
+			// defer: {
+			// 	reply: true,
+			// },
 			logging: true,
 			cooldown: 2000,
 		});

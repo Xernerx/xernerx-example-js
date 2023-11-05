@@ -24,7 +24,7 @@ export default class ReadyEvent extends XernerxEvent {
 		// });
 
 		for (const key of Object.keys(this.client.modules)) {
-			console.log(key, this.client.modules[key].readyTimestamp);
+			// console.log(key, this.client.modules[key].readyTimestamp);
 		}
 	}
 }

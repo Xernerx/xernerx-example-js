@@ -1,3 +1,5 @@
+/** @format */
+
 import { EmbedBuilder, XernerxSlashCommand } from 'xernerx';
 
 export default class ButtonCommand extends XernerxSlashCommand {
@@ -9,6 +11,7 @@ export default class ButtonCommand extends XernerxSlashCommand {
 	}
 
 	async exec(interaction) {
-		// I will add this one day.
+		await interaction.util.delay(4000);
+		interaction.util.reply('hi');
 	}
 }
