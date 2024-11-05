@@ -1,4 +1,67 @@
+# - __VSCODE__
+# Everything specific to VSCode should be here.
+
+# .vscode
+# settings.json
+
+# ________________
+
+# # __Environment__
+# Everything specific to this environment should be here.
+
+# *.json
+# *.txt
+# .env
+# data
+# config.json
 config.js
+config.ts
+# *.sqlite
+# tokens.json
+# tokens.js
+# ________________
+
+# * __Node__
+# Everything specific to node should be here.
+
 node_modules
 package-lock.json
-*.sqlite
+.npm
+# npm-debug.log*
+# pids
+# *.pid
+# *.seed
+# *.pid.lock
+
+# ________________
+
+# * __Yarn__
+# Everything specific to node should be here.
+
+# .yarn-integrity
+# yarn-debug.log*
+# yarn-error.log*
+
+# ________________
+
+# . __JavaScript__
+# Everything specific to JavaScript should be here
+
+# .next
+
+# ________________
+
+# ? __TypeScript__
+# Everything specific to TypeScript should be here.
+
+dist
+# types
+# typings
+# *.tsbuildinfo
+
+# ________________
+
+# ! Python
+# Everything specific to Python should be here
+
+# ________________

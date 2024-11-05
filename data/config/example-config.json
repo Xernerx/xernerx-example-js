@@ -1,6 +1,0 @@
-{
-  "token": "Your Token",
-  "prefix": ["prefix1", "prefix2"],
-  "guildId": "your server ID",
-  "ownerId": ["ownerId 1", "ownerId 2"]
-}

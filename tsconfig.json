@@ -1,0 +1,35 @@
+{
+	"include": ["src"],
+	"exclude": ["node_modules", ".github", "docs"],
+	"compilerOptions": {
+		// Type Checking
+		"allowUnreachableCode": false,
+		"allowUnusedLabels": false,
+		"noFallthroughCasesInSwitch": true,
+		"noImplicitOverride": true,
+		// "noImplicitReturns": true,
+		"noUnusedLocals": true,
+		"strict": true,
+		"useUnknownInCatchVariables": true,
+
+		// Emit
+		"declaration": true,
+		"importHelpers": true,
+		"newLine": "lf",
+		"noEmitHelpers": true,
+		"outDir": "./dist",
+		"removeComments": false,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+
+		// Language and Environment
+		"experimentalDecorators": true,
+		"lib": ["ESNext"],
+		"useDefineForClassFields": true,
+		"target": "ES2022",
+		"module": "NodeNext",
+		"rootDir": "./src",
+		"moduleResolution": "NodeNext",
+		"skipLibCheck": true
+	}
+}
