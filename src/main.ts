@@ -14,12 +14,17 @@ const client = new (class Client extends XernerxClient<typeof config> {
 					levels: {
 						info: true,
 						warn: true,
+						error: true,
 						debug: true,
 					},
 				},
 			},
 			config
 		);
+
+		this.modules.eventHandler.loadEvents({
+			directory: './dist/events',
+		});
 	}
 })();
 
