@@ -5,7 +5,7 @@ import { config } from 'dotenv';
 
 config();
 
-const client = new (class Client extends XernerxClient<typeof settings> {
+const client = new (class Client extends XernerxClient<typeof process.env> {
 	constructor() {
 		super(
 			{ intents: [1, 'MessageContent', 'GuildMessages'] },
