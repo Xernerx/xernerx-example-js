@@ -21,8 +21,7 @@ const client = new (class Client extends XernerxClient<typeof settings> {
 						debug: true,
 					},
 				},
-			},
-			settings
+			}
 		);
 
 		this.modules.eventHandler.loadEvents({
