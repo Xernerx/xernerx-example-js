@@ -3,7 +3,7 @@
 import { XernerxClient } from 'xernerx';
 import { config } from 'dotenv';
 
-const settings = config();
+const settings = config() as { token: string };
 
 const client = new (class Client extends XernerxClient<typeof settings> {
 	constructor() {
@@ -11,7 +11,7 @@ const client = new (class Client extends XernerxClient<typeof settings> {
 			{ intents: [1, 'MessageContent', 'GuildMessages'] },
 			{
 				// debug: true,
-				// token: config.metaToken,
+				token: settings.token,
 				log: {
 					type: 'dynamic',
 					levels: {
