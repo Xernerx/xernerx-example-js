@@ -1,6 +1,6 @@
 /** @format */
 
-import { XernerxEventBuilder } from 'xernerx';
+import { Events, XernerxEventBuilder } from 'xernerx';
 
 export default class ReadyEvent extends XernerxEventBuilder {
 	constructor() {
@@ -10,10 +10,12 @@ export default class ReadyEvent extends XernerxEventBuilder {
 			type: 'discord',
 			emitter: 'client',
 			once: false,
+			watch: Events.ClientReady,
 		});
 	}
 
 	override async run(client: any) {
-		console.log(client.user);
+		// console.log(client.user);
+		console.log('My Custom Message');
 	}
 }

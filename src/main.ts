@@ -1,14 +1,17 @@
 /** @format */
 
 import { XernerxClient } from 'xernerx';
-import config from './config.js';
+import { config } from 'dotenv';
 
-const client = new (class Client extends XernerxClient<typeof config> {
+const settings = config();
+
+const client = new (class Client extends XernerxClient<typeof settings> {
 	constructor() {
 		super(
-			{ intents: [1] },
+			{ intents: [1, 'MessageContent', 'GuildMessages'] },
 			{
 				// debug: true,
+				// token: config.metaToken,
 				log: {
 					type: 'dynamic',
 					levels: {
@@ -19,11 +22,15 @@ const client = new (class Client extends XernerxClient<typeof config> {
 					},
 				},
 			},
-			config
+			settings
 		);
 
 		this.modules.eventHandler.loadEvents({
 			directory: './dist/events',
+		});
+
+		this.modules.commandHandler.loadMessageCommands({
+			directory: './dist/commands/message',
 		});
 	}
 })();

@@ -11,7 +11,7 @@
 
 # *.json
 # *.txt
-# .env
+.env
 # data
 # config.json
 config.js
