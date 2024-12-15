@@ -4,7 +4,8 @@
 	"type": "module",
 	"main": "dist/main.js",
 	"scripts": {
-		"dev": "npm link xernerx && nodemon"
+		"start": "npm i xernerx@beta && npm i && node .",
+		"dev": "npm rm xernerx && npm i && npm link xernerx && nodemon"
 	},
 	"keywords": [],
 	"author": "",
