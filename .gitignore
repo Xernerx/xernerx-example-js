@@ -14,8 +14,8 @@
 .env
 # data
 # config.json
-config.js
-config.ts
+# config.js
+# config.ts
 # *.sqlite
 # tokens.json
 # tokens.js

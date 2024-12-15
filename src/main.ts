@@ -2,10 +2,11 @@
 
 import { XernerxClient } from 'xernerx';
 import { config } from 'dotenv';
+import settings from './config.js';
 
 config();
 
-const client = new (class Client extends XernerxClient<typeof process.env> {
+const client = new (class Client extends XernerxClient<typeof settings> {
 	constructor() {
 		super(
 			{ intents: [1, 'MessageContent', 'GuildMessages'] },
@@ -21,7 +22,8 @@ const client = new (class Client extends XernerxClient<typeof process.env> {
 						debug: true,
 					},
 				},
-			}
+			},
+			settings
 		);
 
 		this.modules.eventHandler.loadEvents({
