@@ -33,6 +33,8 @@ const client = new (class Client extends XernerxClient<typeof settings> {
 		this.modules.commandHandler.loadMessageCommands({
 			directory: './dist/commands/message',
 		});
+
+		this.modules.dashboardHandler.loadDashboard();
 	}
 })();
 
