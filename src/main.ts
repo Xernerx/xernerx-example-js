@@ -9,7 +9,7 @@ config();
 const client = new (class Client extends XernerxClient<typeof settings> {
 	constructor() {
 		super(
-			{ intents: [1, 'MessageContent', 'GuildMessages'] },
+			{ intents: ['Guilds', 'MessageContent', 'GuildMessages'] },
 			{
 				// debug: true,
 				token: process.env.token,
@@ -29,6 +29,8 @@ const client = new (class Client extends XernerxClient<typeof settings> {
 		this.modules.eventHandler.loadEvents({
 			directory: './dist/events',
 		});
+
+		this.modules.eventHandler.loadStore();
 
 		this.modules.commandHandler.loadMessageCommands({
 			directory: './dist/commands/message',
