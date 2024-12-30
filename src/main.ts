@@ -12,9 +12,9 @@ const client = new (class Client extends XernerxClient<typeof settings> {
 			{ intents: ['Guilds', 'MessageContent', 'GuildMessages'] },
 			{
 				// debug: true,
-				token: process.env.token,
+				token: process.env.betaToken,
 				log: {
-					type: 'dynamic',
+					// type: 'dynamic',
 					levels: {
 						info: true,
 						warn: true,
@@ -34,6 +34,7 @@ const client = new (class Client extends XernerxClient<typeof settings> {
 
 		this.modules.commandHandler.loadMessageCommands({
 			directory: './dist/commands/message',
+			prefix: '!',
 		});
 
 		this.modules.dashboardHandler.loadDashboard();

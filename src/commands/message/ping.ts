@@ -1,5 +1,13 @@
 /** @format */
 
-export default class Command {
-	constructor() {}
+import { XernerxMessageCommandBuilder } from 'xernerx';
+
+export default class PingCommand extends XernerxMessageCommandBuilder {
+	constructor() {
+		super('ping', {
+			name: 'ping',
+			aliases: ['pong'],
+			description: 'Ping!',
+		});
+	}
 }
